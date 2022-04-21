@@ -1,0 +1,31 @@
+{
+  "name": "qaautomation-int",
+  "version": "1.0.0",
+  "description": "Integration Automation Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "integration-test": "./node_modules/.bin/cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/big6media/QAAutomation-Int.git"
+  },
+  "author": "SantoshLegalfit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/big6media/QAAutomation-Int/issues"
+  },
+  "homepage": "https://github.com/big6media/QAAutomation-Int#readme",
+  "devDependencies": {
+    "@cypress/webpack-preprocessor": "^5.11.0",
+    "cypress": "9.5.4"
+  },
+  "dependencies": {
+    "cypress-cucumber-preprocessor": "^4.3.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "step_definitions": "cypress/integration/stepDefinitions/"
+  }
+}
