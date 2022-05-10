@@ -41,6 +41,10 @@ Cypress.Commands.add('openEditorSite', () => {
     login.editorLogin().click()
 })
 
+Cypress.Commands.add('openRenderSite', () => {
+    cy.visit('https://legal:fit@atestsite.builder.sandbox.legalfit.io/')
+})
+
 
 Cypress.Commands.add('showSettings', () => {
     cy.get('.settings-container').invoke('attr', 'style', 'display: block')
