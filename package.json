@@ -19,13 +19,13 @@
   "homepage": "https://github.com/big6media/QAAutomation-Int#readme",
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^5.11.0",
-    "cypress": "9.5.4"
+    "cypress": "^9.6.0"
   },
   "dependencies": {
     "cypress-cucumber-preprocessor": "^4.3.1"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,
-    "step_definitions": "cypress/integration/stepDefinitions/"
+    "step_definitions": "cypress/integration/stepDefinitions"
   }
 }
