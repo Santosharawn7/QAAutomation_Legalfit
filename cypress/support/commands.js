@@ -35,10 +35,14 @@ Cypress.Commands.add('login', () => {
 })
 
 Cypress.Commands.add('openEditorSite', () => {
-    cy.visit('https://legal:fit@atestsite.builder.sandbox.legalfit.io/admin/edit/')
+    cy.visit('https://legal:fit@aaronson.builder.sandbox.legalfit.io/admin/edit/')
     login.email().type('turing')
     login.password().type('h2B2oxKI74JVzjpWQW8rRlQkZ', {log: false})
     login.editorLogin().click()
+})
+
+Cypress.Commands.add('openRenderSite', () => {
+    cy.visit('https://legal:fit@a-crane.builder.sandbox.legalfit.io/')
 })
 
 
