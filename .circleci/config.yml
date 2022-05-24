@@ -11,7 +11,7 @@ workflows:
   build:
     jobs:
       - cypress/install:
-          install-command: yarn install --frozen-lockfile
+          install-command: npm install
       - cypress/run:
           yarn: true
           name: "Integration Test"
