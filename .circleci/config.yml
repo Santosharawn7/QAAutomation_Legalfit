@@ -15,7 +15,7 @@ workflows:
       - cypress/run:
           yarn: true
           name: "Integration Test"
-          install-command: "npm install cypress --save-dev"
+          install-command: "npm install"
           requires: 
             - cypress/install
           executor: with-chrome
