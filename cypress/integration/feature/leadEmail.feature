@@ -6,7 +6,7 @@ Scenario: HP Footer Contact Form Submits Lead Email When Client Doesn't Have A F
 
     Given I logged in on the Render of the Premium Site
     When I fill every contents of form
-    | name | email | phNumber | case |
+    | name | email | phone | case |
     | John test | testersgonnatest@gmail.com | 816-111-1111 | This is a test of the inquiry Contact Form. |
     And I press Submit button
     Then I should be navigated to lead inquiry page
