@@ -15,6 +15,6 @@ module.exports = defineConfig({
     },
     specPattern:
       'cypress/e2e/feature/',
-    baseUrl: 'https://standard.qa-a.legalfit.io/',
+    baseUrl: 'http://sites.local.legalfit.io:8000/admin/login',
   },
 })
