@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-import Director from "../integration/pageObjects/director-ps.po"
-import Login from "../integration/pageObjects/login.po"
+import Director from "../e2e/pageObjects/director-ps.po"
+import Login from "../e2e/pageObjects/login.po"
 
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
@@ -56,4 +56,8 @@ Cypress.Commands.add('showBadges', () => {
 
 Cypress.Commands.add('showInsertBlocks', () => {
     cy.get('.add-block-container').invoke('attr', 'style', 'display: block')
+})
+
+Cypress.Commands.add('googleLogin', ()=>{
+    cy.get('.google-login').click()
 })

@@ -1,5 +1,6 @@
 import { And, Given,  Then,  When } from "cypress-cucumber-preprocessor/steps"
 
+
 //Contact Form in the Hero Won't Submit If The Name, Email, or Description Is Missing
 Given(`I logged in on the Render version of the Premium Site`,() => {
     cy.visit('https://legal:fit@a-dominguez.builder.sandbox.legalfit.io')
