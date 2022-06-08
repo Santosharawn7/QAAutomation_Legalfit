@@ -2193,10 +2193,10 @@
     "minimist" "^1.2.5"
     "through" "^2.3.8"
 
-"cypress@^9.6.0":
-  "integrity" "sha512-nNwt9eBQmSENamwa8LxvggXksfyzpyYaQ7lNBLgks3XZ6dPE/6BCQFBzeAyAPt/bNXfH3tKPkAyhiAZPYkWoEg=="
-  "resolved" "https://registry.npmjs.org/cypress/-/cypress-9.6.0.tgz"
-  "version" "9.6.0"
+"cypress@^10.0.2":
+  "integrity" "sha512-7+C4KHYBcfZrawss+Gt5PlS35rfc6ySc59JcHDVsIMm1E/J35dqE41UEXpdtwIq3549umCerNWnFADzqib4kcA=="
+  "resolved" "https://registry.npmjs.org/cypress/-/cypress-10.0.2.tgz"
+  "version" "10.0.2"
   dependencies:
     "@cypress/request" "^2.88.10"
     "@cypress/xvfb" "^1.2.4"
