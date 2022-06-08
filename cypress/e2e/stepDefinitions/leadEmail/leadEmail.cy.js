@@ -8,7 +8,7 @@ Given(`I logged in on the Render of the Premium Site`,() => {
 When(`I fill every contents of form`, (datatable) => {
 datatable.hashes().forEach((element)=>{
   cy.get('.f-inquiry-form [name=name].form-control').type(element.name,{force: true})
-  cy.get('.f-inquiry-form [name=phone].form-control').type(element.phNumber, {force: true})
+  cy.get('.f-inquiry-form [name=phone].form-control').type(element.phone, {force: true})
   cy.get('.f-inquiry-form [name=email].form-control').type(element.email, {force: true})
   cy.get('.f-inquiry-form [name=inquiry].form-control').type(element.case, {force: true})
   })
@@ -27,7 +27,7 @@ And(`I should see "Your inquiry has been sent." message`, () => {
 })
 
 
-//Automate Test when the phone number is missing from the Contact Form
+//Automate Test when the phone number is missing from the HP hero Contact Form
 
 Given('You are on a render page and HP hero contact form',()=>{
   cy.visit('https://legal:fit@a-dominguez.builder.sandbox.legalfit.io')
@@ -38,24 +38,19 @@ datatable.hashes().forEach((element) => {
   cy.get('.hero-container [name=name].form-control').type(element.name,{force: true})
   cy.get('.hero-container [name=email].form-control').type(element.email, {force: true})
   cy.get('.hero-container [name=inquiry].form-control').type(element.case, {force: true})
-})
-  
-  
+})  
 })
 
 And('You click on submit button of a HP hero contact form',()=>{
    cy.get('.hero-container [element=button]').click({force: true})
-
 })
 
 Then('You are navigated to leads inquiry page',()=>{
    cy.url().should('contain','/leads/send_inquiry/')
-
 })
 
 And('You will see the sent inquiry message',()=>{
    cy.contains('Your inquiry has been sent').should('be.visible')
-
 })
 
 //When The Phone Number Is Missing The HP Footer Contact Form Still Submits Lead Email
@@ -74,17 +69,14 @@ When('You fill every contents without phone number on the footer HP contact form
 
 And('You click on submit button of a HP footer contact form',()=>{
    cy.get('.footer [element=button]').click({force: true})
-
 })
 
 Then('You are navigated to leads inquiry page',()=>{
    cy.url().should('contain','/leads/send_inquiry/')
-
 })
 
 And('You will see the sent inquiry message',()=>{
    cy.contains('Your inquiry has been sent').should('be.visible')
-
 })
 
 //When The Phone Number Is Missing The IP Footer Contact Form Still Submits Lead Email
@@ -103,17 +95,14 @@ When('You scroll and fill every contents without phone number on the footer IP c
 
 And('You click on submit button of a IP footer contact form',()=>{
    cy.get('.footer [element=button]').click({force: true})
-
 })
 
 Then('You are navigated to the leads inquiry page',()=>{
    cy.url().should('contain','/leads/send_inquiry/')
-
 })
 
 And('You will see the sent inquiry message',()=>{
    cy.contains('Your inquiry has been sent').should('be.visible')
-
 })
 
 //When The Phone Number Is Missing The PPC Hero Contact Form Still Submits Lead Email
@@ -132,17 +121,14 @@ When('You scroll and fill every contents without phone number on the footer of P
 
 And('You click on submit button of a PPC Landing Hero contact form',()=>{
    cy.get('.landing-hero [element=button]').click({force: true})
-
 })
 
 Then('You are navigated to the leads inquiry page',()=>{
    cy.url().should('contain','/leads/send_inquiry/')
-
 })
 
 And('You will see the sent inquiry message',()=>{
    cy.contains('Your inquiry has been sent').should('be.visible')
-
 })
 
 //When The Phone Number Is Missing The PPC Footer Contact Form Still Submits Lead Email
@@ -161,15 +147,12 @@ When('You scroll and fill every contents without phone number on the footer PPC 
 
 And('You click on submit button of a PPC landing footer contact form',()=>{
    cy.get('.landing-footer [element=button]').click({force: true})
-
 })
 
 Then('You are navigated to the leads inquiry page',()=>{
    cy.url().should('contain','/leads/send_inquiry/')
-
 })
 
 And('You will see the sent inquiry message',()=>{
    cy.contains('Your inquiry has been sent').should('be.visible')
-
 })

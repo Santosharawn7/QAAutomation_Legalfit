@@ -1,5 +1,5 @@
 import { Given, Then, And , When} from "cypress-cucumber-preprocessor/steps";
-import Director from "../pageObjects/director-ps.po";
+import Director from "../../pageObjects/director-ps.po";
 
 const director = new Director()
 
