@@ -1,6 +1,7 @@
 import { Given, Then, And , When} from "cypress-cucumber-preprocessor/steps";
+import Director from "../../pageObjects/director-ps.po";
 
-const director = new 
+const director = new Director()
 
 Given('I logged in on Premium Sites Director', () => {
   cy.login()
