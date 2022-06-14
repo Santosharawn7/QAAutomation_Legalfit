@@ -18,4 +18,4 @@ module.exports = defineConfig({
     baseUrl: 'http://sites.local.legalfit.io:8000/admin/login',
     supportFile: 'cypress/support/e2e',
   },
-})
+});
