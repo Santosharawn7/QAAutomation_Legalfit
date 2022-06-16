@@ -16,7 +16,7 @@ module.exports = defineConfig({
     supportFile:'cypress/support/e2e.js',
     specPattern:
       'cypress/e2e/feature/',
-    baseUrl: 'http://sites.local.legalfit.io:8000',
+    baseUrl: 'http://sites.local.legalfit.io:8000/admin/edit',
     supportFile: 'cypress/support/e2e.js',
   },
 });
