@@ -1,9 +1,9 @@
 class Login {
-    email = () => cy.get('#id_useremail')
+    email = () => cy.get('#id_useremail').eq(0)
     
-    password = () => cy.get('#id_password')
+    password = () => cy.get('#id_password').eq(0)
 
-    submitButton = () => cy.get('button').contains('Login')
+    submitButton = () => cy.get('button').contains('Login').eq(0)
 
     editorLogin = () => cy.get('form > button')
 }
