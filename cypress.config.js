@@ -13,6 +13,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       return require('./cypress/plugins/index.js')(on, config)
     },
+    supportFile:'cypress/support/e2e.js',
     specPattern:
       'cypress/e2e/feature/',
     baseUrl: 'http://sites.local.legalfit.io:8000/admin/login',
