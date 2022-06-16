@@ -7,7 +7,7 @@ class LeadEmails {
 
     heroContactFormInquiry = () => cy.get('.hero-container [name=inquiry].form-control')
 
-    footerContactFormName = () => cy.get('.foooter [name=name].form-control')
+    footerContactFormName = () => cy.get('.footer [name=name].form-control')
 
     footerContactFormEmail = () => cy.get('.footer [name=email].form-control')
 
