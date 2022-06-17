@@ -1,4 +1,4 @@
-const { defineConfig } = require('cypress')
+const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   pageLoadTimeout: 100000,
@@ -16,6 +16,7 @@ module.exports = defineConfig({
     supportFile:'cypress/support/e2e.js',
     specPattern:
       'cypress/e2e/feature/',
-    baseUrl: 'http://sites.local.legalfit.io:8000/admin/login',
+    baseUrl: 'http://sites.local.legalfit.io:8000',
+    supportFile: 'cypress/support/e2e.js',
   },
-})
+});
