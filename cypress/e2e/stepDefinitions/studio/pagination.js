@@ -12,7 +12,7 @@ cy.get('#login-button').should('be.visible')
 })
 
 Then('I check username',()=>{
- cy.get('#id_useremail').should('be.visible)
+ cy.get('#id_useremail').should('be.visible')
 })
 
 Given('I logged in on Premium Sites Director', () => {
