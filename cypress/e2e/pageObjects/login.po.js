@@ -1,4 +1,5 @@
 class Login {
+
     email = () => cy.get('#id_useremail').eq(0)
     
     password = () => cy.get('#id_password').eq(0)

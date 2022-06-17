@@ -3,6 +3,18 @@ import Director from "../../pageObjects/director-ps.po";
 
 const director = new Director()
 
+Given('I Login',()=>{
+  cy.login()
+})
+
+When('I click Logout button',()=>{
+cy.get('#sidebar-log-out').click()
+})
+
+Then('It logs out',()=>{
+  cy.get('#login-button').should('be.visible')
+})
+
 Given('I logged in on Premium Sites Director', () => {
   cy.login()
 })
