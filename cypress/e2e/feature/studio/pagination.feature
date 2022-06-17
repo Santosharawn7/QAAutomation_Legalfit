@@ -3,9 +3,9 @@ Feature: Pagination and Filters
 Testing the Pagination feature on Premium Sites
 
   Scenario: Login & Logout
-    Given I Login
-    When I click Logout button
-    Then It logs out
+    Given I am on landing page
+    When I check Login button
+    Then I check username
 
   Scenario: Testing the PS-243 Searching or Adding Filter Options Sets Pagination to Page 1
     Given I logged in on Premium Sites Director
