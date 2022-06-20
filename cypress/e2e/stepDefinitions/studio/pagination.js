@@ -1,7 +1,19 @@
 import { Given, Then, And , When} from "cypress-cucumber-preprocessor/steps";
-import Director from "../pageObjects/director-ps.po";
+import Director from "../../pageObjects/director-ps.po";
 
 const director = new Director()
+
+Given('I am on landing page',()=>{
+  cy.visit('/')
+})
+
+When('I check Login button',()=>{
+cy.get('#login-button').should('be.visible')
+})
+
+Then('I check username',()=>{
+ cy.get('#id_useremail').should('be.visible')
+})
 
 Given('I logged in on Premium Sites Director', () => {
   cy.login()

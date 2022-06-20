@@ -1,7 +1,7 @@
 class Director {
     editorLink = () => cy.get('.no-break > a')
 
-    filter = () => cy.get('.form-control')
+    filter = () => cy.get('.form-control').eq(0)
 
     tableList = () => cy.get('.table tbody tr')
 
@@ -29,7 +29,7 @@ class Director {
 
     apps = () => cy.get('#sidebar-apps')
 
-    filterSearch = () => cy.get('#filter-search')
+    filterSearch = () => cy.get('#filter-search').eq(0)
 
     pagetype = () => cy.get('#page-type')
 }
