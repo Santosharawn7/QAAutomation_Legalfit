@@ -8,6 +8,4 @@ echo "about to hit 127.0.0.1:8000"
 curl 127.0.0.1:8000 || echo "it failed"
 echo "sites.local.legalfit.io:8000"
 curl sites.local.legalfit.io:8000 || echo "it failed"  
-cd ..
-cd ~/qa-automation 
-npx cypress run
+
