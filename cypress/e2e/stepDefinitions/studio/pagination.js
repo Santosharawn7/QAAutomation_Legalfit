@@ -4,7 +4,7 @@ import Director from "../../pageObjects/director-ps.po";
 const director = new Director()
 
 Given('I am on landing page',()=>{
-  cy.visit('http://sites.local.legalfit.io:3000/admin/login')
+  cy.visit('http://standard.local.legalfit.io:8000/admin/login')
 })
 
 When('I check Login button',()=>{
