@@ -25,7 +25,7 @@ Cypress.Commands.add('visitPremiumSite', ()=> {
 })
 
 Cypress.Commands.add('login', () => { 
-    cy.visit('/')
+    cy.visit('http://standard.local.legalfit.io:8000/admin/login')
     cy.fixture('../fixtures/login-data').then(data =>{
         login.email().type(data.email)
         login.password().type(data.password,{log: false})
