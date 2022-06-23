@@ -8,7 +8,7 @@ Given('I am on landing page',()=>{
 })
 
 When('I check Login button',()=>{
-cy.get('#login-button').should('be.visible')
+cy.get('button[type='submit']').should('be.visible')
 })
 
 Then('I check username',()=>{
