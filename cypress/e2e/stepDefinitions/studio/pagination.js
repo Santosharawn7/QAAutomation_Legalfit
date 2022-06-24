@@ -16,7 +16,10 @@ Then('I check username',()=>{
 })
 
 Given('I logged in on Premium Sites Director', () => {
-  cy.login()
+  cy.visit('http://standard.local.legalfit.io:8000/admin/edit')
+  cy.get('#id_useremail').type('turing')
+  cy.get('#id_password').type('h2B2oxKI74JVzjpWQW8rRlQkZ')
+  cy.get('button').contains('Login').click()
 })
 
 When(`I filter a premium site name on Search Filter`, () => {
