@@ -13,6 +13,9 @@ cy.get('button').contains('Login').should('be.visible')
 
 Then('I check username',()=>{
  cy.get('#id_useremail').should('be.visible')
+  cy.get('#id_useremail').type('turing')
+  cy.get('#id_password').type('h2B2oxKI74JVzjpWQW8rRlQkZ')
+  cy.get('button').contains('Login').click()
 })
 
 Given('I logged in on Premium Sites Director', () => {
@@ -20,6 +23,7 @@ Given('I logged in on Premium Sites Director', () => {
   cy.get('#id_useremail').type('turing')
   cy.get('#id_password').type('h2B2oxKI74JVzjpWQW8rRlQkZ')
   cy.get('button').contains('Login').click()
+  cy.get('#websites-create-new').should('be.visible')
 })
 
 When(`I filter a premium site name on Search Filter`, () => {
