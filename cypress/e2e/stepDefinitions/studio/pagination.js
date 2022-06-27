@@ -7,8 +7,8 @@ Given('I logged in on Premium Sites Director', () => {
   cy.visit('http://standard.local.legalfit.io:8000/admin/login')
   cy.get('#id_useremail').type('turing')
   cy.get('#id_password').type('h2B2oxKI74JVzjpWQW8rRlQkZ')
-  cy.get('button').contains('Login').click()
-  cy.get('#websites-create-new').should('be.visible')
+  cy.get('[type="submit"]').click()
+  cy.get('[id=websites-create-new]').should('exist')
 })
 
 When(`I filter a premium site name on Search Filter`, () => {
