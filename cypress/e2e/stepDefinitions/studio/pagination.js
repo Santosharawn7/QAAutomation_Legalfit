@@ -8,12 +8,13 @@ Given('I am on a landing page',() => {
 })
 
 When('I login',() => {
-  cy.get('#id_useremail').type('turing')
-  cy.get('#id_password').type('h2B2oxKI74JVzjpWQW8rRlQkZ')
-  cy.get('[type="submit"]').click()
+  cy.get('#id_useremail').should('exist').type('turing')
+  cy.get('#id_password').should('exist').type('h2B2oxKI74JVzjpWQW8rRlQkZ')
+  cy.get('[type="submit"]').should('exist').click()
 })
 
 Then('I should see the Create New button',() => {
+  cy.get('#sidebar-log-out').should('exist')
   cy.get('[id=websites-create-new]').should('exist')
 })
 
