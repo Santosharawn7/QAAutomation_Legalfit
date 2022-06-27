@@ -3,6 +3,20 @@ import Director from "../../pageObjects/director-ps.po";
 
 const director = new Director()
 
+Given('I am on a landing page',() => {
+  cy.visit('http://standard.local.legalfit.io:8000/admin/login')
+})
+
+When('I login',() => {
+  cy.get('#id_useremail').type('turing')
+  cy.get('#id_password').type('h2B2oxKI74JVzjpWQW8rRlQkZ')
+  cy.get('[type="submit"]').click()
+})
+
+Then('I should see the Create New button',() => {
+  cy.get('[id=websites-create-new]').should('exist')
+})
+
 Given('I logged in on Premium Sites Director', () => {
   cy.visit('http://standard.local.legalfit.io:8000/admin/login')
   cy.get('#id_useremail').type('turing')
