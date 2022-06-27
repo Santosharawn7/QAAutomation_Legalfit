@@ -25,6 +25,7 @@ Given('I logged in on Premium Sites Director', () => {
 When(`I filter a premium site name on Search Filter`, () => {
   director.tableList().should('have.lengthOf.lte', 30)
   director.filter().type('Aaronson')
+  cy.get('#websites-create-new').should('be.visible')
 })
 
 Then(`I should only be shown number "1" on the pagination`, () => {
