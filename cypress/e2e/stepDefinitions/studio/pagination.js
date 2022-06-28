@@ -8,7 +8,7 @@ Given('URL of landing page',() => {
 })
 
 When('I am on landing page',() => {
-  cy.url().should('contain.text','admin/login')
+  cy.url().should('contain','admin/login')
 })
 
 Then('I should see the login input fields',() => {
@@ -22,8 +22,8 @@ Given('I am on a landing page',() => {
 })
 
 When('I login',() => {
-  cy.get('#id_useremail').should('exist').type('turing')
-  cy.get('#id_password').should('exist').type('h2B2oxKI74JVzjpWQW8rRlQkZ')
+  cy.get('#id_useremail').should('exist').type('brandon@legalfit.com')
+  cy.get('#id_password').should('exist').type('pbkdf2_sha256$150000$lpM6TvRSaDYY$QLcmSAbzeqJO0Za5FZthg0G8WreKn2iGr4wf+cnp9Uk=')
   cy.get('[type="submit"]').should('exist').click()
 })
 
