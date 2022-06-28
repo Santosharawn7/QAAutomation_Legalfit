@@ -36,7 +36,7 @@ Given('I logged in on Premium Sites Director', () => {
   cy.get('#id_useremail').type('qa@legalfit.com')
   cy.get('#id_password').type('pbkdf2_sha256$260000$qiiW4oxdBcLy3mbxkfrpHt$XDly+VrDRlN5nT+SSFWJ2nqTemWjrlEDmCCTB4PY++U=')
   cy.get('[type="submit"]').click()
-  cy.get('[id=websites-create-new]').should('exist')
+  cy.get('[#websites-create-new').should('exist')
 })
 
 When(`I filter a premium site name on Search Filter`, () => {
