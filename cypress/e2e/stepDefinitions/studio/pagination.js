@@ -4,11 +4,11 @@ import Director from "../../pageObjects/director-ps.po";
 const director = new Director()
 
 Given('URL of landing page',() => {
-  cy.visit('http://standard.local.legalfit.io:8000/admin/login')
+  cy.visit('http://standard.local.legalfit.io:8000/login')
 })
 
 When('I am on landing page',() => {
-  cy.url().should('contain','admin/login')
+  cy.url().should('contain','/login')
 })
 
 Then('I should see the login input fields',() => {
@@ -18,11 +18,11 @@ Then('I should see the login input fields',() => {
 })
 
 Given('I am on a landing page',() => {
-  cy.visit('http://standard.local.legalfit.io:8000/admin/login')
+  cy.visit('http://standard.local.legalfit.io:8000/login')
 })
 
 When('I login',() => {
-  cy.get('#id_useremail').should('exist').type('qa@legalfit.com')
+  cy.get('#id_useremail').should('exist').type('turing')
   cy.get('#id_password').should('exist').type('h2B2oxKI74JVzjpWQW8rRlQkZ')
   cy.get('[type="submit"]').should('exist').click()
 })
