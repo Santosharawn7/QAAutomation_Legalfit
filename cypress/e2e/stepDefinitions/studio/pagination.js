@@ -28,8 +28,7 @@ When('I login',() => {
 })
 
 Then('I should see the Create New button',() => {
-  cy.get('#sidebar-log-out').should('exist')
-  cy.get('[id=websites-create-new]').should('exist')
+  cy.get('.alert').should('exist')
 })
 
 Given('I logged in on Premium Sites Director', () => {
