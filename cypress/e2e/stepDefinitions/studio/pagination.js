@@ -4,7 +4,7 @@ import Director from "../../pageObjects/director-ps.po";
 const director = new Director()
 
 Given('URL of landing page',() => {
-  cy.visit('http://standard.local.legalfit.io:8000/login')
+  cy.visit('http://standard.local.legalfit.io:3000/stencil/login')
 })
 
 When('I am on landing page',() => {
@@ -18,7 +18,7 @@ Then('I should see the login input fields',() => {
 })
 
 Given('I am on a landing page',() => {
-  cy.visit('http://standard.local.legalfit.io:8000/login')
+  cy.visit('http://standard.local.legalfit.io:3000/stencil/login/')
 })
 
 When('I login',() => {
