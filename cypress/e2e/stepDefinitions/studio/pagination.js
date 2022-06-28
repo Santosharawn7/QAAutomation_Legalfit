@@ -33,8 +33,8 @@ Then('I should see the Create New button',() => {
 
 Given('I logged in on Premium Sites Director', () => {
   cy.visit('http://standard.local.legalfit.io:8000/admin/login')
-  cy.get('#id_useremail').type('turing')
-  cy.get('#id_password').type('h2B2oxKI74JVzjpWQW8rRlQkZ')
+  cy.get('#id_useremail').type('will@legalfit.com')
+  cy.get('#id_password').type('pbkdf2_sha256$30000$CfKg8UG4RPwZ$UZZQ67UV9rrKvnsoqkWOtl+D7uxHWo75AOoMf5XHpA8=')
   cy.get('[type="submit"]').click()
   cy.get('[id=websites-create-new]').should('exist')
 })
