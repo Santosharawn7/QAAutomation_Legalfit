@@ -3,6 +3,20 @@ import Director from "../../pageObjects/director-ps.po";
 
 const director = new Director()
 
+Given('URL of landing page',() => {
+  cy.visit('http://standard.local.legalfit.io:8000/admin/login')
+})
+
+When('I am on landing page',() => {
+  cy.url().should('contain.text','admin/login')
+})
+
+Then('I should see the login input fields',() => {
+  cy.get('#id_useremail').should('exist')
+  cy.get('#id_password').should('exist')
+  cy.get('[type="submit"]').should('exist')
+})
+
 Given('I am on a landing page',() => {
   cy.visit('http://standard.local.legalfit.io:8000/admin/login')
 })
