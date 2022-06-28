@@ -4,7 +4,7 @@ import Director from "../../pageObjects/director-ps.po";
 const director = new Director()
 
 Given('URL of landing page',() => {
-  cy.visit('http://sites.local.legalfit.io:8000/admin/login')
+  cy.visit('http://standard.local.legalfit.io:8000/admin/login')
 })
 
 When('I am on landing page',() => {
@@ -18,7 +18,7 @@ Then('I should see the login input fields',() => {
 })
 
 Given('I am on a landing page',() => {
-  cy.visit('http://sites.local.legalfit.io:8000/admin/login')
+  cy.visit('http://standard.local.legalfit.io:8000/admin/login')
 })
 
 When('I login',() => {
@@ -32,7 +32,7 @@ Then('I should see the Create New button',() => {
 })
 
 Given('I logged in on Premium Sites Director', () => {
-  cy.visit('http://sites.local.legalfit.io:8000/admin/login')
+  cy.visit('http://standard.local.legalfit.io:8000/admin/login')
   cy.get('#id_useremail').type('turing')
   cy.get('#id_password').type('h2B2oxKI74JVzjpWQW8rRlQkZ')
   cy.get('[type="submit"]').click()
