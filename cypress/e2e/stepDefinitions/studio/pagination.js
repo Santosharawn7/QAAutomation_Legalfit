@@ -36,7 +36,7 @@ Given('I logged in on Premium Sites Director', () => {
   cy.get('#id_useremail').type('turing')
   cy.get('#id_password').type('h2B2oxKI74JVzjpWQW8rRlQkZ')
   cy.get('[type="submit"]').click()
-  cy.get('[#websites-create-new').should('exist')
+  cy.get('#websites-create-new').should('exist')
 })
 
 When(`I filter a premium site name on Search Filter`, () => {
