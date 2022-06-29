@@ -28,7 +28,10 @@ When('I login',() => {
 })
 
 Then('I should see the Create New button',() => {
-  cy.get('#sidebar-log-out').should('exist')
+    cy.request('/api/premium-website/').as('premiumsite');
+       cy.get('@premiumsite').then(premiumsite => {
+           expect(premiumsite.status).to.eq(200);
+       });
 })
 
 Given('I logged in on Premium Sites Director', () => {
