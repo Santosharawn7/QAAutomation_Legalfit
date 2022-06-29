@@ -22,8 +22,8 @@ Given('I am on a landing page',() => {
 })
 
 When('I login',() => {
-  cy.get('#id_useremail').should('exist').type('turing')
-  cy.get('#id_password').should('exist').type('h2B2oxKI74JVzjpWQW8rRlQkZ')
+  cy.get('#id_useremail').should('exist').type('nt@example.co.uk')
+  cy.get('#id_password').should('exist').type('mypwd')
   cy.get('[type="submit"]').should('exist').click()
 })
 
