@@ -3,28 +3,13 @@ import Director from "../../pageObjects/director-ps.po";
 
 const director = new Director()
 
-Given('URL of landing page',() => {
-  cy.visit('http://standard.local.legalfit.io:8000/admin/login')
-})
-
-When('I am on landing page',() => {
-  cy.url().should('contain','/login')
-})
-
-Then('I should see the login input fields',() => {
-  cy.get('#id_useremail').should('exist')
-  cy.get('#id_password').should('exist')
-  cy.get('[type="submit"]').should('exist')
-})
 
 Given('I am on a landing page',() => {
-  cy.visit('http://standard.local.legalfit.io:8000/admin/login')
+  cy.visit('/')
 })
 
 When('I login',() => {
-  cy.get('#id_useremail').should('exist').type('nt@example.co.uk')
-  cy.get('#id_password').should('exist').type('mypwd')
-  cy.get('[type="submit"]').should('exist').click()
+  cy.login()
 })
 
 Then('I should see the Create New button',() => {
@@ -35,11 +20,7 @@ Then('I should see the Create New button',() => {
 })
 
 Given('I logged in on Premium Sites Director', () => {
-  cy.visit('http://standard.local.legalfit.io:8000/admin/login')
-  cy.get('#id_useremail').type('nt@example.co.uk')
-  cy.get('#id_password').type('mypwd')
-  cy.get('[type="submit"]').click()
-  cy.get('#websites-create-new').should('exist')
+  cy.login()
 })
 
 When(`I filter a premium site name on Search Filter`, () => {
