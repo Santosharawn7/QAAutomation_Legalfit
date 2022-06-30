@@ -2,11 +2,6 @@ Feature: Pagination and Filters
 
 Testing the Pagination feature on Premium Sites
 
-  Scenario: Show Login Page Items
-    Given URL of landing page
-    When I am on landing page
-    Then I should see the login input fields
-
   Scenario: Login and Logut
     Given I am on a landing page
     When I login
