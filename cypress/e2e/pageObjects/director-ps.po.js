@@ -7,7 +7,7 @@ class Director {
 
     createNewButton = () => cy.get('#websites-create-new')
 
-    pageNumber = () => cy.get('.page-item')
+    pageNumber = () => cy.get('.page-link')
 
     siteStatus = () => cy.get('#status')
 
