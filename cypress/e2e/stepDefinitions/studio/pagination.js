@@ -3,16 +3,21 @@ import Director from "../../pageObjects/director-ps.po";
 
 const director = new Director()
 
-Given('I am on landing page',()=>{
-  cy.visit('/')
+Given('I am on a landing page',() => {
+  cy.visit('https://studio.sandbox.legalfit.io')
 })
 
-When('I check Login button',()=>{
-cy.get('#login-button').should('be.visible')
+When('I login',() => {
+  cy.login()
 })
 
-Then('I check username',()=>{
- cy.get('#id_useremail').should('be.visible')
+Then('I should see the Create New button',() => {
+  cy.request('/api/premium-website/').as('premiumsite');
+       cy.get('@premiumsite').then(premiumsite => {
+           expect(premiumsite.status).to.eq(200);
+       });
+  cy.get('#sidebar-log-out').should('exist')
+  cy.get('[id=websites-create-new]').should('exist')
 })
 
 Given('I logged in on Premium Sites Director', () => {
@@ -22,6 +27,7 @@ Given('I logged in on Premium Sites Director', () => {
 When(`I filter a premium site name on Search Filter`, () => {
   director.tableList().should('have.lengthOf.lte', 30)
   director.filter().type('Aaronson')
+  cy.get('#websites-create-new').should('be.visible')
 })
 
 Then(`I should only be shown number "1" on the pagination`, () => {

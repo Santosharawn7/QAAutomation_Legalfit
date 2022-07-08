@@ -29,13 +29,13 @@ Cypress.Commands.add('login', () => {
     cy.fixture('../fixtures/login-data').then(data =>{
         login.email().type(data.email)
         login.password().type(data.password,{log: false})
-        login.submitButton().contains('Login').click()
+        login.submitButton().click()
         director.tableList().should('have.lengthOf.lte', 30)
     })
 })
 
 Cypress.Commands.add('openEditorSite', () => {
-    cy.visit('https://legal:fit@aaronson.builder.sandbox.legalfit.io/admin/edit/')
+    cy.visit('https://legal:fit@atestsite.builder.sandbox.legalfit.io/admin/edit/')
     login.email().type('turing')
     login.password().type('h2B2oxKI74JVzjpWQW8rRlQkZ', {log: false})
     login.editorLogin().click()
