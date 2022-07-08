@@ -1,0 +1,6 @@
+qa.automation:
+  email: qa@legalfit.com
+  first_name: Quality
+  last_name: Assurance
+  password: pbkdf2_sha256$260000$qiiW4oxdBcLy3mbxkfrpHt$XDly+VrDRlN5nT+SSFWJ2nqTemWjrlEDmCCTB4PY++U=
+  is_superuser: True
