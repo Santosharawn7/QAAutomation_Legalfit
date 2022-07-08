@@ -19,4 +19,4 @@ module.exports = defineConfig({
     baseUrl: 'https://studio.sandbox.legalfit.io/',
     supportFile: 'cypress/support/e2e.js',
   },
-});
+})
