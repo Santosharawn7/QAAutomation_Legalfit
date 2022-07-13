@@ -2,11 +2,7 @@ Feature: Pagination and Filters
 
 Testing the Pagination feature on Premium Sites
 
-<<<<<<< HEAD
-  Scenario: Login and Logut
-=======
    Scenario: Login and Logut
->>>>>>> 2416a6413255d5b1a7c9451c4b34f7f422343281
     Given I am on a landing page
     When I login
     Then I should see the Create New button
