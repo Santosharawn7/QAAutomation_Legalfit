@@ -1,9 +1,12 @@
 import { Given, Then, When } from "cypress-cucumber-preprocessor/steps";
-import Director from "../../pageObjects/director-ps.po";
-import Login from "../../pageObjects/login.po";
+import { EditorFeatures, Homepage, InteriorPage, PPCLanding } from "../../pageObjects/editor-ps.po";
+import Render from "../../pageObjects/render.po";
 
-const login = new Login()
-const director = new Director()
+const homepage = new Homepage()
+const render = new Render()
+const interiorpage = new InteriorPage()
+const editorFeatures = new EditorFeatures()
+const ppcLanding = new PPCLanding()
 
 //Homepage
 Given('I am logged in on builder',()=>{
@@ -11,144 +14,149 @@ Given('I am logged in on builder',()=>{
 })
 
 When('I make any changes on the builder on the Hero Block',()=>{
-    cy.get('.hero-container .edit-button ').then(content =>{
+    homepage.heroTitle().then(content =>{
       cy.wrap(content).invoke('text').then(text => {
            const firstText = text.trim()
             cy.wrap(content).should('contain.text', firstText)
-            cy.wrap(content).click().clear().type('TEST', { delay: 300})
-            cy.wrap(content).should('not.contain.text', firstText).and('contain.text', 'TEST')  
-        })
-        
+            cy.wrap(content).click().clear().type('Test123', { delay: 1000})
+            cy.wrap(content).should('not.contain.text', firstText)
+            cy.wrap(content).should('contain.text','Test123')
+        })  
    })
 })
 
 Then('I see "Has Changes" badge at the top left of the page',()=>{
-    cy.get('.text-published').should('be.visible')
-    cy.get('.text-changes').should('be.visible')
-    cy.get('.text-changes').should('contain.text','Has Changes')
+    editorFeatures.publishedBadge().should('be.visible')
+    editorFeatures.changesBadge().should('be.visible')
+    editorFeatures.changesBadge().should('contain.text','Has Changes')
 })
 
 When('I click the Publish button',()=>{
-    cy.get('button').contains('Publish Page').click()
+    editorFeatures.publishButton().click()
 })
 
 Then('I can no longer see the "Has Changes" badge',()=>{
-    cy.get('.toast-body').should('be.visible').and('contain.text','Published')
-    cy.request('https://atestsite.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal',200)
- //   cy.get('.text-changes').contains('Has Changes').should('not.exist')
+    editorFeatures.toast().should('be.visible').and('contain.text','Published')
+    cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal',200)
 })
 
 When('I go to the render version of the site',()=>{
-    cy.visit('https://legal:fit@atestsite.builder.sandbox.legalfit.io/')
+    cy.openRenderSite()
 })
 
 Then('I can see the published changes',()=>{
-    cy.get('.hero-container .btn').should('contain.text','TEST')
+    render.homepageHeroTitle().should('contain.text','Test123')
     cy.go('back')
-    cy.get('.hero-container .edit-button ').click().clear()
-    cy.get('.hero-container .edit-button ').type('CONTACT ME')
-    cy.get('button').contains('Publish Page').click()
+    homepage.heroTitle().click().clear()
+    homepage.heroTitle().type('This is a Automation Test Site', {delay: 1000})
+    homepage.heroTitle().should('contain.text','This is a Automation Test Site')
+    editorFeatures.publishButton().click()
     cy.go('forward')
 })
 
 //Interior page
 Given('I am logged in on the interior page',()=>{
     cy.openEditorSite()
-    cy.get('.nav-item').eq(1).click()
+    editorFeatures.navigationItem().eq(1).click()
 })
 
 When('I make changes on the interior page',()=>{
-    cy.get('.interior-hero .edit-button').then(button =>{
-      cy.wrap(button).invoke('text').then(text => {
+    interiorpage.interiorHeroTitle().then(content =>{
+      cy.wrap(content).invoke('text').then(text => {
            const firstText = text.trim()
-            cy.wrap(button).should('contain.text', firstText)
-            cy.wrap(button).click().clear().type('TEST1', {delay: 300})
-            cy.wrap(button).should('not.contain.text', firstText).and('contain.text', 'TEST1')  
+            cy.wrap(content).should('contain.text', firstText)
+            cy.wrap(content).click().clear().type('Test123', {delay: 1000})   
+            cy.wrap(content).should('not.contain.text', firstText)
+            cy.wrap(content).should('contain.text','Test123')
         })
-        
    })
 })
 
 Then('I can see "Has Changes" badge at the top left of the page of the interior page',()=>{
-    cy.get('.text-published').should('be.visible')
-    cy.get('.text-changes').should('be.visible')
-    cy.get('.text-changes').should('contain.text','Has Changes')
+    editorFeatures.publishedBadge().should('be.visible')
+    editorFeatures.changesBadge().should('be.visible')
+    editorFeatures.changesBadge().should('contain.text','Has Changes')
 })
 
 When('I click the Publish button on the interior page',()=>{
-    cy.get('button').contains('Publish Page').click()
+    editorFeatures.publishButton().click()
 })
 
 Then('I can no longer see the "Has Changes" badge on the interior page',()=>{
-    cy.get('.toast-body').should('be.visible').and('contain.text','Published')
-    cy.request('https://atestsite.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal',200)
- //   cy.get('.text-changes').contains('Has Changes').should('not.exist')
+    editorFeatures.toast().and('contain.text','Published')
+    cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal',200)
 })
 
 When('I navigate to the render version of interior page',()=>{
-    cy.visit('https://legal:fit@atestsite.builder.sandbox.legalfit.io/service-index')
+    cy.openRenderSite()
+    editorFeatures.navigationItem().eq(1).click()
 })
 
 Then('I can see the published changes on that interior page',()=>{
-    cy.get('.interior-hero .btn').should('contain.text','TEST1')
+    render.interiorHeroTitle().should('contain.text','Test123')
     cy.go('back')
-    cy.get('.interior-hero .edit-button').click().clear()
-    cy.get('.interior-hero .edit-button').type('SCHEDULE A FREE CONSULTATION', {delay: 100})
-    cy.get('button').contains('Publish Page').click()
+    cy.go('back')
+    interiorpage.interiorHeroTitle().click().clear()
+    interiorpage.interiorHeroTitle().type('AUTOMATION TEST', {delay: 100})
+    interiorpage.interiorHeroTitle().should('contain.text','AUTOMATION TEST')
+    editorFeatures.publishButton().click()
     cy.go('forward')
 })
 
 //PPC Landing page
 Given('I am logged in on the PPC Landing page',()=>{
     cy.openEditorSite()
-    cy.get('.nav-item').contains('PPC Landing').click()
+    editorFeatures.navigationItem().contains('PPC Landing').click()
 })
 
 When('I make changes on the PPC Landing page',()=>{
-    cy.get('.landing-hero .edit-button').then(content =>{
+    ppcLanding.formTitle().then(content =>{
       cy.wrap(content).invoke('text').then(text => {
            const firstText = text.trim()
             cy.wrap(content).should('contain.text', firstText)
-            cy.wrap(content).click().clear().type('TEST1', {delay: 300})
-            cy.wrap(content).should('not.contain.text', firstText).and('contain.text', 'TEST1')  
+            cy.wrap(content).click().clear().type('Test123', {delay: 1000})
+            cy.wrap(content).should('not.contain.text', firstText)
+            cy.wrap(content).should('contain.text','Test123')  
         })
-        
    })
 })
 
 Then('I can see "Has Changes" badge at the top left of the page of the PPC Landing page',()=>{
-    cy.get('.text-published').should('be.visible')
-    cy.get('.text-changes').should('be.visible')
-    cy.get('.text-changes').should('contain.text','Has Changes')
+    editorFeatures.publishedBadge().should('be.visible')
+    editorFeatures.changesBadge().should('be.visible')
+    editorFeatures.changesBadge().should('contain.text','Has Changes')
 })
 
 When('I click the Publish button on the PPC Lading page',()=>{
-    cy.get('button').contains('Publish Page').click()
+    editorFeatures.publishButton().click()
 })
 
 Then('I can no longer see the "Has Changes" badge on the PPC Landing page',()=>{
-    cy.get('.toast-body').should('be.visible').and('contain.text','Published')
-    cy.request('https://atestsite.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal',200)
- //   cy.get('.text-changes').contains('Has Changes').should('not.exist')
+    editorFeatures.toast().should('be.visible').and('contain.text','Published')
+    cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal',200)
 })
 
 When('I navigate to the render version of PPC Landing page',()=>{
-    cy.visit('https://legal:fit@atestsite.builder.sandbox.legalfit.io/ppc-landing')
+    cy.openRenderSite()
+    editorFeatures.navigationItem().contains('PPC Landing').click()
 })
 
 Then('I can see the published changes on that PPC Landing page',()=>{
-    cy.get('.landing-hero .btn').should('contain.text','TEST1')
+    render.ppcFormTitle().should('contain.text','Test123')
     cy.go('back')
-    cy.get('.landing-hero .edit-button').click().clear()
-    cy.get('.landing-hero .edit-button').type('Submit')
-    cy.get('button').contains('Publish Page').click()
+    cy.go('back')
+    ppcLanding.formTitle().click().clear()
+    ppcLanding.formTitle().type('Automated Landing Text', {delay: 1000})
+    editorFeatures.publishButton().click()
     cy.go('forward')
 })
 
 When('I send lead emails',(datatable)=>{
-    cy.visit('https://legal:fit@atestsite.builder.sandbox.legalfit.io/ppc-landing')
+    cy.openRenderSite()
+    editorFeatures.navigationItem().contains('PPC Landing').click()
     datatable.hashes().forEach((element) => {
         cy.get('.landing-hero [name=name].form-control').type(element.name,{force: true})
+        cy.get('.landing-hero [name=phone].form-control').type(element.phone,{force: true})
         cy.get('.landing-hero [name=email].form-control').type(element.email, {force: true})
         cy.get('.landing-hero [name=inquiry].form-control').type(element.case, {force: true})
       }) 
@@ -163,137 +171,193 @@ Then('I can see the "The inquiry has been sent" message on the page.',()=>{
 //Child page
 Given('I am logged in on the child page',()=>{
     cy.openEditorSite()
+    editorFeatures.navigationDropdown().then(($el)=>{
+        cy.wrap($el).trigger('mouseover')
+        cy.wrap($el).children('.dropdown-menu').invoke('show')
+    })
+    cy.get('.nav-item.dropdown .dropdown-menu .dropdown-item').then(childpage =>{
+        cy.wrap(childpage).first().click()
+    })
 })
 
 When('I make changes on the child page',()=>{
-    cy.get('.interior-hero .edit-button').then(content =>{
-      cy.wrap(content).invoke('text').then(text => {
-           const firstText = text.trim()
-            cy.wrap(content).should('contain.text', firstText)
-            cy.wrap(content).click().clear().type('TEST1', {delay: 100})
-            cy.wrap(content).should('not.contain.text', firstText).and('contain.text', 'TEST1')  
-        })
-        
-   })
+    interiorpage.interiorHeroTitle().then(content =>{
+        cy.wrap(content).invoke('text').then(text => {
+             const firstText = text.trim()
+              cy.wrap(content).should('contain.text', firstText)
+              cy.wrap(content).click().clear().type('Test123', {delay: 1000})   
+              cy.wrap(content).should('not.contain.text', firstText)
+              cy.wrap(content).should('contain.text','Test123')
+          })
+     })
 })
 
 Then('I can see "Has Changes" badge at the top left of the page of the child page',()=>{
-    cy.get('.text-published').should('be.visible')
-    cy.get('.text-changes').should('be.visible')
-    cy.get('.text-changes').should('contain.text','Has Changes')
+    editorFeatures.publishedBadge().should('be.visible')
+    editorFeatures.changesBadge().should('be.visible')
+    editorFeatures.changesBadge().should('contain.text','Has Changes')
 })
 
 When('I click the Publish button on the child page',()=>{
-    cy.get('button').contains('Publish Page').click()
+    editorFeatures.publishButton().click()
 })
 
 Then('I can no longer see the "Has Changes" badge on the child page',()=>{
-    cy.get('.toast-body').should('be.visible').and('contain.text','Published')
-    cy.request('https://atestsite.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal',200)
- //   cy.get('.text-changes').contains('Has Changes').should('not.exist')
+    editorFeatures.toast().and('contain.text','Published')
+    cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal',200)
 })
 
 When('I navigate to the render version of child page',()=>{
-    cy.visit('https://legal:fit@atestsite.builder.sandbox.legalfit.io/testpage/gothamtd/')
+    cy.openRenderSite()
+    editorFeatures.navigationDropdown().then(($el)=>{
+        cy.wrap($el).trigger('mouseover')
+        cy.wrap($el).children('.dropdown-menu').invoke('show')
+    })
+    cy.get('.nav-item.dropdown .dropdown-menu .dropdown-item').then(childpage =>{
+        cy.wrap(childpage).first().click()
+    })
 })
 
 Then('I can see the published changes on that child page',()=>{
-    cy.get('.interior-hero .btn').should('contain.text','TEST1')
+    render.interiorHeroTitle().should('contain.text','Test123')
     cy.go('back')
-    cy.get('.interior-hero .edit-button').click().clear()
-    cy.get('.interior-hero .edit-button').type('TEST')
-    cy.get('button').contains('Publish Page').click()
+    cy.go('back')
+    interiorpage.interiorHeroTitle().click().clear()
+    interiorpage.interiorHeroTitle().type('AUTOMATION TEST', {delay: 100})
+    interiorpage.interiorHeroTitle().should('contain.text','AUTOMATION TEST')
+    editorFeatures.publishButton().click()
     cy.go('forward')
 })
 
 //Grandchild page
 Given('I am logged in on the grandchild page',()=>{
   cy.openEditorSite()
+  editorFeatures.navigationDropdown().then(($el)=>{
+    cy.wrap($el).trigger('mouseover')
+    cy.wrap($el).children('.dropdown-menu').invoke('show')
+    })
+    cy.get('.nav-item.dropdown .dropdown-menu .dropdown-menu').then(grandchildpage =>{
+        cy.wrap(grandchildpage).first().click()   
+    })
 })
 
 When('I make changes on the grandchild page',()=>{
-    cy.get('.interior-hero-text').then(content =>{
-      cy.wrap(content).invoke('text').then(text => {
-           const firstText = text.trim()
-            cy.wrap(content).should('contain.text', firstText)
-            cy.wrap(content).click().clear().type('TEST1', {delay: 100})
-            cy.wrap(content).should('not.contain.text', firstText).and('contain.text', 'TEST1')  
-        })
-        
-   })
+    interiorpage.interiorHeroTitle().then(content =>{
+        cy.wrap(content).invoke('text').then(text => {
+             const firstText = text.trim()
+              cy.wrap(content).should('contain.text', firstText)
+              cy.wrap(content).click().clear().type('Test123', {delay: 1000})   
+              cy.wrap(content).should('not.contain.text', firstText)
+              cy.wrap(content).should('contain.text','Test123')
+          })
+     })
 })
 
 Then('I can see "Has Changes" badge at the top left of the page of the grandchild page',()=>{
-    cy.get('.text-published').should('be.visible')
-    cy.get('.text-changes').should('be.visible')
-    cy.get('.text-changes').should('contain.text','Has Changes')
+    editorFeatures.publishedBadge().should('be.visible')
+    editorFeatures.changesBadge().should('be.visible')
+    editorFeatures.changesBadge().should('contain.text','Has Changes')
 })
 
 When('I click the Publish button on the grandchild page',()=>{
-    cy.get('button').contains('Publish Page').click()
+    editorFeatures.publishButton().click()
 })
 
 Then('I can no longer see the "Has Changes" badge on the grandchild page',()=>{
-    cy.get('.toast-body').should('be.visible').and('contain.text','Published')
-    cy.request('https://contest.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal',200)
- //   cy.get('.text-changes').contains('Has Changes').should('not.exist')
+    editorFeatures.toast().and('contain.text','Published')
+    cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal',200)
 })
 
 When('I navigate to the render version of grandchild page',()=>{
-    cy.visit('https://legal:fit@contest.builder.sandbox.legalfit.io/testpage/gothamtd/')
+    cy.openRenderSite()
+    editorFeatures.navigationDropdown().then(($el)=>{
+        cy.wrap($el).trigger('mouseover')
+        cy.wrap($el).children('.dropdown-menu').invoke('show')
+        })
+    cy.get('.nav-item.dropdown .dropdown-menu .dropdown-menu').then(grandchildpage =>{
+        cy.wrap(grandchildpage).first().click()   
+    })
 })
 
 Then('I can see the published changes on that grandchild page',()=>{
-    cy.get('.interior-hero-text').should('contain.text','TEST1')
+    render.interiorHeroTitle().should('contain.text','Test123')
     cy.go('back')
-    cy.get('.interior-hero-text').click().clear()
-    cy.get('.interior-hero-text').type('TEST')
-    cy.get('button').contains('Publish Page').click()
+    cy.go('back')
+    interiorpage.interiorHeroTitle().click().clear()
+    interiorpage.interiorHeroTitle().type('AUTOMATION TEST', {delay: 100})
+    interiorpage.interiorHeroTitle().should('contain.text','AUTOMATION TEST')
+    editorFeatures.publishButton().click()
     cy.go('forward')
 })
 
 //Great Grandchild page
 Given('I am logged in on the great grandchild page',()=>{
     cy.openEditorSite()
+    cy.get('#sidebar-pages').click()
+    cy.get(' .menu-right-icon').eq(0).click()
+    cy.get(' .menu-right-icon').eq(0).click()
+    cy.get(' .menu-right-icon').eq(0).click()
+    cy.get('.sl-vue-tree-title .position-relative').each($el => {
+        cy.wrap($el).invoke('text').then(text => {
+            const titletext = text.trim()
+            if(titletext == 'Service Detail2'){
+                cy.log(titletext)
+                cy.wrap($el).realMouseDown()
+            }
+        })
+    })
+    cy.get('.pencil-icon').filter(':visible').click()
 })
 
 When('I make changes on the great grandchild page',()=>{
-    cy.get('.interior-hero-text').then(content =>{
-      cy.wrap(content).invoke('text').then(text => {
-           const firstText = text.trim()
-            cy.wrap(content).should('contain.text', firstText)
-            cy.wrap(content).click().clear().type('TEST1', {delay: 100})
-            cy.wrap(content).should('not.contain.text', firstText).and('contain.text', 'TEST1')  
-        })
-        
-   })
+    interiorpage.interiorHeroTitle().then(content =>{
+        cy.wrap(content).invoke('text').then(text => {
+             const firstText = text.trim()
+              cy.wrap(content).should('contain.text', firstText)
+              cy.wrap(content).click().clear().type('Test123', {delay: 1000})   
+              cy.wrap(content).should('not.contain.text', firstText)
+              cy.wrap(content).should('contain.text','Test123')
+          })
+     })
 })
 
 Then('I can see "Has Changes" badge at the top left of the page of the great grandchild page',()=>{
-    cy.get('.text-published').should('be.visible')
-    cy.get('.text-changes').should('be.visible')
-    cy.get('.text-changes').should('contain.text','Has Changes')
+    editorFeatures.publishedBadge().should('be.visible')
+    editorFeatures.changesBadge().should('be.visible')
+    editorFeatures.changesBadge().should('contain.text','Has Changes')
 })
 
 When('I click the Publish button on the great grandchild page',()=>{
-    cy.get('button').contains('Publish Page').click()
+    editorFeatures.publishButton().click()
 })
 
 Then('I can no longer see the "Has Changes" badge on the great grandchild page',()=>{
-    cy.get('.toast-body').should('be.visible').and('contain.text','Published')
-    cy.request('https://contest.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal',200)
- //   cy.get('.text-changes').contains('Has Changes').should('not.exist')
+    editorFeatures.toast().and('contain.text','Published')
+    cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal',200)
 })
 
 When('I navigate to the render version of great grandchild page',()=>{
-    cy.visit('https://legal:fit@contest.builder.sandbox.legalfit.io/testpage/gothamtd/')
+    cy.openSiteMap()
+    cy.get('.sitemap ul').within(list => {
+        cy.wrap(list).find('li').within((parent) => {
+            cy.wrap(parent).find('li').within(child => {
+                cy.wrap(child).find('li').within(grandchild=>{
+                    cy.wrap(grandchild).find('li').within(greatgrandchild => {
+                        cy.wrap(greatgrandchild).click()
+                    })
+                })
+            })
+        })
+    })
 })
 
 Then('I can see the published changes on that great grandchild page',()=>{
-    cy.get('.interior-hero-text').should('contain.text','TEST1')
+    render.interiorHeroTitle().should('contain.text','Test123')
     cy.go('back')
-    cy.get('.interior-hero-text').click().clear()
-    cy.get('.interior-hero-text').type('TEST')
-    cy.get('button').contains('Publish Page').click()
+    cy.go('back')
+    interiorpage.interiorHeroTitle().click().clear()
+    interiorpage.interiorHeroTitle().type('AUTOMATION TEST', {delay: 100})
+    interiorpage.interiorHeroTitle().should('contain.text','AUTOMATION TEST')
+    editorFeatures.publishButton().click()
     cy.go('forward')
 })
