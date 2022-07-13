@@ -61,10 +61,7 @@ Cypress.Commands.add('showInsertBlocks', () => {
 Cypress.Commands.add('googleLogin', ()=>{
     cy.get('.google-login').click()
 })
-<<<<<<< HEAD
-=======
 
 Cypress.Commands.add('openSiteMap', () => {
     cy.visit('https://legal:fit@automation-test.builder.sandbox.legalfit.io/sitemap')
 })
->>>>>>> 2416a64 (changes added)
