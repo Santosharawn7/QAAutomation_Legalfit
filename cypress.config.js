@@ -4,7 +4,6 @@ module.exports = defineConfig({
   pageLoadTimeout: 100000,
   chromeWebSecurity: false,
   sourceRewriting: true,
-  experimentalSourceRewriting: true,
   defaultCommandTimeout: 200000,
   viewportHeight: 900,
   viewportWidth: 1414,
