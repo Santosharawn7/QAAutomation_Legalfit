@@ -34,11 +34,7 @@ Scenario: User can publish an PPC Landing page
     Then I can no longer see the "Has Changes" badge on the PPC Landing page
     When I navigate to the render version of PPC Landing page
     Then I can see the published changes on that PPC Landing page
-    When I send lead emails
-    | name | email | phone | case |
-    | John test | testersgonnatest@gmail.com | 816-111-1111 | This is a test of the inquiry Contact Form. |
-    Then I can see the "The inquiry has been sent" message on the page.
-
+    
 @child-page
 Scenario: User can publish an Child page
 
