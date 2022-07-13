@@ -173,7 +173,7 @@ Then(`I should see the pagination number set to only "1"`,()=>{
 })
 
 When(`I click the Page Type`,()=>{
-  director.pageTypes().click()
+  director.pageTypes().click({force: true})
 })
 
 Then(`I should see the list of page types`,()=>{
@@ -184,6 +184,7 @@ Then(`I should see the list of page types`,()=>{
 })
 
 When(`I filter the page type`,()=>{
+  director.pageTypes().click({force: true})
   director.filterSearch().type('Blog')
 })
 
