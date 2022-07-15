@@ -51,6 +51,7 @@ When('I click the Create New button',()=>{
 })
 
 Then('I should see the showcase of the layouts',()=>{
+      cy.get('.images-container').should('be.visible')
       cy.request('/api/premium-website/types').as('layoutshowcase');
        cy.get('@layoutshowcase').then(layoutshowcase => {
            expect(layoutshowcase.status).to.eq(200);
