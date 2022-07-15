@@ -3,9 +3,8 @@ import Director from "../../pageObjects/director-ps.po";
 
 const director = new Director()
 
-
 Given('I am on a landing page',() => {
-  cy.visit('/')
+  cy.visit('https://studio.sandbox.legalfit.io')
 })
 
 When('I login',() => {
@@ -13,10 +12,12 @@ When('I login',() => {
 })
 
 Then('I should see the Create New button',() => {
-    cy.request('/api/premium-website/').as('premiumsite');
+  cy.request('/api/premium-website/').as('premiumsite');
        cy.get('@premiumsite').then(premiumsite => {
            expect(premiumsite.status).to.eq(200);
        });
+  cy.get('#sidebar-log-out').should('exist')
+  cy.get('[id=websites-create-new]').should('exist')
 })
 
 Given('I logged in on Premium Sites Director', () => {
@@ -172,7 +173,7 @@ Then(`I should see the pagination number set to only "1"`,()=>{
 })
 
 When(`I click the Page Type`,()=>{
-  director.pageTypes().click()
+  director.pageTypes().click({force: true})
 })
 
 Then(`I should see the list of page types`,()=>{
@@ -183,6 +184,7 @@ Then(`I should see the list of page types`,()=>{
 })
 
 When(`I filter the page type`,()=>{
+  director.pageTypes().click({force: true})
   director.filterSearch().type('Blog')
 })
 
