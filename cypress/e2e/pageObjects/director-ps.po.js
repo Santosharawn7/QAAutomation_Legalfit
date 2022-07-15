@@ -25,7 +25,7 @@ class Director {
 
     pages = () => cy.get('#sidebar-pages')
 
-    pageTypes = () => cy.get('#pages-tab-page-types .nav-link')
+    pageTypes = () => cy.get('#pages-tab-page-types.nav-item a')
 
     apps = () => cy.get('#sidebar-apps')
 
