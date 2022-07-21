@@ -6,7 +6,7 @@ class Login {
 
     submitButton = () => cy.get('button').contains('Login').eq(0)
 
-    editorLogin = () => cy.get('form > button')
+    editorLogin = () => cy.get('button').contains('Login')
 }
 
 export default Login
