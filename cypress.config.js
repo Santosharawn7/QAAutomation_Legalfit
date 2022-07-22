@@ -18,6 +18,9 @@ module.exports = defineConfig({
     specPattern:
       'cypress/e2e/feature/',
     baseUrl: 'https://studio.sandbox.legalfit.io/',
+    env: {
+      builderUrl: 'https://legal:fit@automation-test.builder.sandbox.legalfit.io/admin/edit/',
+    },
     supportFile: 'cypress/support/e2e.js',
   },
 })

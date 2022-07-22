@@ -25,9 +25,15 @@ class EditorFeatures {
 
     changesBadge = () => cy.get('.text-changes')
 
+    unpublishBadge = () => cy.get('.text-pending')
+
     publishButton = () => cy.get('button').contains('Publish Page')
 
     toast = () => cy.get('.toast-body')
+
+    publishDropdown = () => cy.get('.top-nav-container .dropdown-toggle')
+
+    unPublishMenu = () => cy.get('.dropdown-menu').contains('Unpublish')
 }
 
 class PPCLanding {
