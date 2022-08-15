@@ -20,7 +20,8 @@
   "homepage": "https://github.com/big6media/QAAutomation-Int#readme",
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^5.11.0",
-    "cypress": "^10.3.0"
+    "cypress": "^10.3.0",
+    "cypress-file-upload": "^5.0.8"
   },
   "dependencies": {
     "chai-colors": "^1.0.1",

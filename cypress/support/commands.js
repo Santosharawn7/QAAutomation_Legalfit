@@ -2,6 +2,9 @@
 
 import Director from "../e2e/pageObjects/director-ps.po"
 import Login from "../e2e/pageObjects/login.po"
+import 'cypress-file-upload';
+
+
 
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
