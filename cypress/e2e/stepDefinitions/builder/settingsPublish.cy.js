@@ -151,6 +151,7 @@ When('I clicked the FavIcon',()=>{
 
 Then('I can see the option to upload a FavIcon',()=>{
     cy.get('.favicon-wrapper').should('be.visible')
+    cy.get('.favicon-image').should('be.visible')
 }) 
 
 When('I upload a new FavIcon',()=>{
