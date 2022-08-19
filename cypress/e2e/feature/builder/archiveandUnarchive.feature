@@ -1,8 +1,8 @@
-Feature: Archiving Pages in builder
+Feature: Archiving and Unarchiving Pages in builder
 
-This test run indicates the pages can be archived in the builder
+This test run indicates the pages can be archived and unarchived in the builder
 
-Scenario: Users can archive interior page with no children
+Scenario: Users can archive and unarchive interior page with no children
 
 Given I am logged in on builder
 When I open the pages list
@@ -20,7 +20,7 @@ Then The page is unarchived
 And The page gets listed in the Pages list
 And I publish the page
 
-Scenario: Users can archive child page with no children
+Scenario: Users can archive and unarchive child page with no children
 
 Given I am logged in on builder
 When I open the child page with no children
@@ -34,7 +34,7 @@ When I click the Unarchive button on the child page
 Then The child page gets unarchived
 And I can publish the child page
 
-Scenario: Users can archive PPC Landing page
+Scenario: Users can archive and unarchive PPC Landing page
 
 Given I am logged in on builder
 When I open the pages list
@@ -64,3 +64,17 @@ Then The parent page does not get archived
 And I toast warning is shown with message "Not archived: cannot archive pages that have children"
 When I click Publish button on the parent page
 Then The parent page gets published
+
+Scenario: Users can archive and unarchive the grandchild page
+
+Given I am logged in on builder
+When I open the grandchildren page
+Then The grandchild page should open
+When I click on the unpublish button on the grandchild page
+Then The grandchild page gets unpublished
+When I click the archive button on the grandchild page
+Then The grandchild page gets archived
+And The unarchive button is shown on the top of the grandchild page
+When I click the Unarchive button on the grandchild page
+Then The grandchild page gets unarchived
+And I can publish the grandchild page

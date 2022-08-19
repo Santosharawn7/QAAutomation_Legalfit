@@ -3,7 +3,7 @@ import { EditorFeatures } from "../../pageObjects/editor-ps.po"
 
 const editorFeatures = new EditorFeatures()
 
-
+//Archiving and Unarchiving Interior Page
 Given('I am logged in on builder',()=>{
     cy.openEditorSite()
 })
@@ -39,7 +39,6 @@ When('I click the Unpublish button',()=>{
 
 Then('The page gets unpublished',()=>{
     editorFeatures.unpublishBadge().should('contain.text','Unpublished')
-
 })
 
 And('The dropdown now shows "Archive" button',()=>{
@@ -62,7 +61,6 @@ Then('The page gets archived',()=>{
 And('The Unarchive button is shown',()=>{
     cy.get('.top-nav-container .btn').contains('Unarchive').should('exist')
 })
-
 
 When('I click on Unarchive button',()=>{
     cy.intercept({
@@ -94,7 +92,7 @@ And('I publish the page',()=>{
     editorFeatures.publishButton().click()
 })
 
-//Archiving child page with no children
+//Archiving and Unarchiving child page with no children
 Given('I am logged in on builder',()=>{
     cy.openEditorSite()
 })
@@ -121,6 +119,7 @@ When('I click on the unpublish button on the child page',()=>{
 Then('The child page gets unpublished',()=>{
     cy.url().should('contain','/admin/edit')
 })
+
 When('I click the archive button on the child page',()=>{
     editorFeatures.publishDropdown().click()
     cy.intercept({
@@ -156,7 +155,7 @@ And('I can publish the child page',()=>{
     editorFeatures.publishButton().click()
 })
 
-//Arching PPC Landing page
+//Archiving and Unarchiving PPC Landing page
 Given('I am logged in on builder',()=>{
     cy.openEditorSite()
 })
@@ -192,7 +191,6 @@ When('I click the Unpublish button on the PPC Landing page',()=>{
 
 Then('The PPC Landing page gets unpublished',()=>{
     editorFeatures.unpublishBadge().should('contain.text','Unpublished')
-
 })
 
 And('The dropdown now shows "Archive" button on the PPC Landing page',()=>{
@@ -247,6 +245,7 @@ And('I publish the PPC Landing page',()=>{
     editorFeatures.publishButton().click()
 })
 
+//archiving and unarchiving children page with no grandchildren
 Given('I am logged in on builder',()=>{
     cy.openEditorSite()
 })
@@ -278,7 +277,6 @@ When('I click the archive button on the parent page',()=>{
     cy.get('.dropdown-item').contains('Archive').should('exist')
     cy.get('.dropdown-item').contains('Archive').click()
     editorFeatures.toast().should('be.visible').and('contain.text','Not archived: cannot archive pages that have children')
-
 })
 
 Then('The parent page does not get archived',()=>{
@@ -295,3 +293,75 @@ When('I click Publish button on the parent page',()=>{
 Then('The parent page gets published', ()=>{
     cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal',200)
 })
+
+//Archiving and Unarchiving Grandchildren page
+Given('I am logged in on builder',()=>{
+    cy.openEditorSite()
+}) 
+
+When('I open the grandchildren page',()=>{
+    editorFeatures.navigationDropdown().then(($el)=>{
+        cy.wrap($el).trigger('mouseover')
+        cy.wrap($el).children('.dropdown-menu').invoke('show')
+    })
+    cy.get('.nav-item .dropdown-menu .dropdown-menu').then(childpage =>{
+        cy.wrap(childpage).contains('Service Detail4').click()
+    })
+}) 
+
+Then('The grandchild page should open',()=>{
+    cy.url().should('contain', '/admin/edit')
+}) 
+
+When('I click on the unpublish button on the grandchild page',()=>{
+    editorFeatures.publishDropdown().click()
+    cy.intercept({
+        method: 'PATCH',
+        url: 'https://automation-test.builder.sandbox.legalfit.io/admin/api/page/unpublish_or_publish/',
+      }).as('apiCheck')
+    editorFeatures.unPublishMenu().click()  
+}) 
+
+Then('The grandchild page gets unpublished',()=>{
+    cy.wait('@apiCheck').its('response.statusCode').should('equal', 200)
+}) 
+
+When('I click the archive button on the grandchild page',()=>{
+    editorFeatures.publishDropdown().click()
+    cy.get('.dropdown-item').contains('Archive').should('exist')
+    cy.intercept({
+        method: 'PATCH',
+        url: 'https://automation-test.builder.sandbox.legalfit.io/admin/api/page/*/archive/',
+      }).as('apiCheck')
+    cy.get('.dropdown-item').contains('Archive').click()
+}) 
+
+Then('The grandchild page gets archived',()=>{
+    cy.wait('@apiCheck').its('response.statusCode').should('equal', 204)
+}) 
+
+And('The unarchive button is shown on the top of the grandchild page',()=>{
+    cy.get('.top-nav-container .btn').contains('Unarchive').should('exist')
+}) 
+
+When('I click the Unarchive button on the grandchild page',()=>{
+    cy.intercept({
+        method: 'PATCH',
+        url: 'https://automation-test.builder.sandbox.legalfit.io/admin/api/page/*/unarchive/',
+      }).as('apiCheck')
+    cy.get('.top-nav-container .btn').contains('Unarchive').click()
+}) 
+
+Then('The grandchild page gets unarchived',()=>{
+    cy.wait('@apiCheck').its('response.statusCode').should('equal', 200)
+}) 
+
+And('I can publish the grandchild page',()=>{
+    editorFeatures.publishButton().click()
+    editorFeatures.toast().should('exist').and('contain.text','Published')
+    cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal',200)
+    cy.get('#sidebar-pages').click()
+    cy.get(' .menu-right-icon').eq(0).click()
+    cy.get(' .menu-right-icon').click({multiple: true})
+    cy.get('.sl-vue-tree-title .position-relative').contains('Service Detail4').should('exist')
+}) 
