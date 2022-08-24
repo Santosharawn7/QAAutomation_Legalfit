@@ -1,4 +1,12 @@
 class LeadEmails {
+    heroInquiryForm = () => cy.get('.hero-container .f-inquiry-form')
+
+    footerInquiryForm = () => cy.get('.footer .f-inquiry-form')
+
+    landingHeroInquiryForm = () => cy.get('.landing-hero .f-inquiry-form')
+
+    landingFooterInquiryForm = () => cy.get('.landing-footer .f-inquiry-form')
+
     heroContactFormName = () => cy.get('.hero-container [name=name].form-control')
 
     heroContactFormEmail = () => cy.get('.hero-container [name=email].form-control')
@@ -58,6 +66,8 @@ class LeadEmails {
     ppcLandingFooterSubmitButton = () => cy.get('.landing-footer [element=button]')
 
     contactSubmitButton = () => cy.get('#contact-page-inquiry-container [element=button]')
+
+    subject = () => cy.get('.footer_inquiry .subject input[type=text]')
 }
 
 export default LeadEmails

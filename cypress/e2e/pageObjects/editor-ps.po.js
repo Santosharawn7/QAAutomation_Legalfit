@@ -34,6 +34,22 @@ class EditorFeatures {
     publishDropdown = () => cy.get('.top-nav-container .dropdown-toggle')
 
     unPublishMenu = () => cy.get('.dropdown-menu').contains('Unpublish')
+
+    designSideBar = () => cy.get('[id=sidebar-design]')
+
+    drawerBody = () => cy.get('.drawer-body')
+
+    brandColorInput = () => cy.get('.color-picker .color-picker-input').eq(0)
+
+    accentColorInput = () => cy.get('.color-picker .color-picker-input').eq(1)
+
+    linkColorInput = () => cy.get('.color-picker .color-picker-input').eq(2)
+
+    headerBody = () => cy.get('header .nav-top')
+
+    settingSaveButton = () => cy.get('.save-button-container')
+
+    settingCloseIcon = () => cy.get('.close-icon')
 }
 
 class PPCLanding {
