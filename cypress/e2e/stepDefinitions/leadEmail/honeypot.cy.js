@@ -4,7 +4,7 @@ import LeadEmails from "../../../e2e/pageObjects/contactform.po"
 const leadEmails = new LeadEmails()
 
 Given('a bot navigates to the Homepage and fills out the Lead Email form', (datatable) => {
-    cy.visit('https://legal:fit@a-dominguez.builder.sandbox.legalfit.io')
+    cy.visit('http://legal:fit@a-dominguez.local.legalfit.io:8000')
     datatable.hashes().forEach((element) => {
         leadEmails.footerContactFormName().scrollIntoView({ force: true })
         leadEmails.footerContactFormName().type(element.name, { force: true })

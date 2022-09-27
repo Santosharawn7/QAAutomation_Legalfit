@@ -33,7 +33,7 @@ And(`I should see "Your inquiry has been sent." message`, () => {
 //Automate Test when the phone number is missing from the HP hero Contact Form
 
 Given('You are on a render page and HP hero contact form', () => {
-  cy.visit('https://legal:fit@a-dominguez.builder.sandbox.legalfit.io')
+  cy.visit('http://legal:fit@a-dominguez.local.legalfit.io:8000')
 })
 
 When('You fill every contents without phone number on the Hero HP Contact form', (datatable) => {
@@ -59,7 +59,7 @@ And('You will see the sent inquiry message', () => {
 //When The Phone Number Is Missing The HP Footer Contact Form Still Submits Lead Email
 
 Given('You are on a render page and footer contact form', () => {
-  cy.visit('https://legal:fit@a-dominguez.builder.sandbox.legalfit.io')
+  cy.visit('http://legal:fit@a-dominguez.local.legalfit.io:8000')
 })
 
 When('You fill every contents without phone number on the footer HP contact form', (datatable) => {
@@ -85,7 +85,7 @@ And('You will see the sent inquiry message', () => {
 //When The Phone Number Is Missing The IP Footer Contact Form Still Submits Lead Email
 
 Given('You are on a interior page render page and footer contact form', () => {
-  cy.visit('https://legal:fit@a-dominguez.builder.sandbox.legalfit.io/practice-areas/drug-violations/marijuana-charges/')
+  cy.visit('http://legal:fit@a-dominguez.local.legalfit.io:8000/practice-areas/drug-violations/marijuana-charges/')
 })
 
 When('You scroll and fill every contents without phone number on the footer IP contact form', (datatable) => {
@@ -111,7 +111,7 @@ And('You will see the sent inquiry message', () => {
 //When The Phone Number Is Missing The PPC Hero Contact Form Still Submits Lead Email
 
 Given('You are on a PPC landing render page and on Hero contact form', () => {
-  cy.visit('https://legal:fit@a-price.builder.sandbox.legalfit.io/family-law-attorney-tulsa/')
+  cy.visit('http://legal:fit@a-price.local.legalfit.io:8000/family-law-attorney-tulsa/')
 })
 
 When('You scroll and fill every contents without phone number on the footer of PPC landing contact form', (datatable) => {
@@ -137,7 +137,7 @@ And('You will see the sent inquiry message', () => {
 //When The Phone Number Is Missing The PPC Footer Contact Form Still Submits Lead Email
 
 Given('You are on a PPC Landing page render page and footer contact form', () => {
-  cy.visit('https://legal:fit@a-price.builder.sandbox.legalfit.io/family-law-attorney-tulsa/')
+  cy.visit('http://legal:fit@a-price.local.legalfit.io:8000/family-law-attorney-tulsa/')
 })
 
 When('You scroll and fill every contents without phone number on the footer PPC Landing contact form', (datatable) => {

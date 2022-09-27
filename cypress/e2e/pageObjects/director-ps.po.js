@@ -1,7 +1,9 @@
 class Director {
     editorLink = () => cy.get('.no-break > a')
 
-    filter = () => cy.get('.form-control').eq(0)
+    filter = () => cy.get('#filter')
+
+    search = () => cy.get('#search')
 
     tableList = () => cy.get('.table tbody tr')
 

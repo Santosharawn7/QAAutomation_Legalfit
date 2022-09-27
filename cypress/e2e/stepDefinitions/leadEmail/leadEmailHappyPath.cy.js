@@ -5,7 +5,7 @@ const leadEmails = new LeadEmails()
 
 //Hero Contact Form on a HP Submits Lead Email
 Given(`I logged in on the Render mode of the Premium Site having Hero Contact form`, () => {
-  cy.visit('https://legal:fit@a-dominguez.builder.sandbox.legalfit.io')
+  cy.visit('http://legal:fit@a-dominguez.local.legalfit.io:8000')
 })
 
 When(`I fill every details of form`, (datatable) => {
@@ -31,7 +31,7 @@ And(`I should see "Your inquiry has been sent." message`, () => {
 
 //HP Footer Contact Form Submits Lead Email When Client Has Form in The Hero
 Given('You are on a render page of the home page with Hero contact form and footer contact form', () => {
-  cy.visit('https://legal:fit@a-dominguez.builder.sandbox.legalfit.io')
+  cy.visit('http://legal:fit@a-dominguez.local.legalfit.io:8000')
 })
 
 When('You fill every details on the Footer contact form after scrolling down', (datatable) => {
@@ -59,7 +59,7 @@ And('You will see the sent inquiry message', () => {
 //PPC Hero Contact Form Submits Lead Email
 
 Given('You are on a PPC landing render page and on Hero contact form', () => {
-  cy.visit('https://legal:fit@a-price.builder.sandbox.legalfit.io/family-law-attorney-tulsa/')
+  cy.visit('http://legal:fit@a-price.local.legalfit.io:8000/family-law-attorney-tulsa/')
 })
 
 When('I fill every contents on the Header of PPC landing contact form', (datatable) => {
@@ -86,7 +86,7 @@ And('You will see the sent inquiry message', () => {
 //PPC Footer Contact Form Submits Lead Email
 
 Given('You are on a PPC Landing page render page and footer contact form', () => {
-  cy.visit('https://legal:fit@a-price.builder.sandbox.legalfit.io/family-law-attorney-tulsa/')
+  cy.visit('http://legal:fit@a-price.local.legalfit.io:8000/family-law-attorney-tulsa/')
 })
 
 When('You scroll and fill every contents on the footer PPC Landing contact form', (datatable) => {
@@ -139,7 +139,7 @@ And(`I should see "Your inquiry has been sent." message`, () => {
 
 //IP Contact Footer Submits Email When Client Doesnt Have A Form in The Hero
 Given('You are on a interior page render page that doesnt have a form in hero', () => {
-  cy.visit('https://legal:fit@a-dominguez.builder.sandbox.legalfit.io/practice-areas/drug-violations/marijuana-charges/')
+  cy.visit('http://legal:fit@a-dominguez.local.legalfit.io:8000/practice-areas/drug-violations/marijuana-charges/')
 })
 
 When('You scroll and fill every contents without phone number on the footer IP contact form', (datatable) => {
@@ -165,7 +165,7 @@ And('You will see the sent inquiry message', () => {
 
 //Contact Page Form Submits Email Lead When Client Doesn't Have A Form in The Hero
 Given('You are on a contact page without a Hero contact form', () => {
-  cy.visit('https://legal:fit@a-dominguez.builder.sandbox.legalfit.io/contact/')
+  cy.visit('http://legal:fit@a-dominguez.local.legalfit.io:8000/contact/')
 })
 
 When('I fill every contents on the contact form of contact page', (datatable) => {

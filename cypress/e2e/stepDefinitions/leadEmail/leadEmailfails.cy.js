@@ -5,7 +5,7 @@ const leadEmails = new LeadEmails()
 
 //Contact Form in the Hero Won't Submit If The Name, Email, or Description Is Missing
 Given(`I logged in on the Render version of the Premium Site`, () => {
-    cy.visit('https://legal:fit@a-dominguez.builder.sandbox.legalfit.io')
+    cy.visit('http://legal:fit@a-dominguez.local.legalfit.io:8000')
 })
 
 When(`I fill every contents of form leaving name field empty`, (datatable) => {
@@ -30,7 +30,7 @@ Then('I should see "Please fill out this field." message under Name field.', () 
 
 //Contact Form in the Footer Won't Submit If The Name, Email, or Description Is Missing
 Given(`I logged in on the Render version of the Premium Site and scroll to Footer Contact Form`, () => {
-    cy.visit('https://legal:fit@a-dominguez.builder.sandbox.legalfit.io')
+    cy.visit('http://legal:fit@a-dominguez.local.legalfit.io:8000')
 })
 
 When(`I fill every contents of form leaving email field empty on Footer Contact Form`, (datatable) => {
@@ -56,7 +56,7 @@ Then('I should see "Please fill out this field." alert message under Email field
 
 //IP Contact Form Won't Submit If The Name, Email, or Description Is Missing
 Given(`I logged in on the Render version of the Interior page of Premium Site`, () => {
-    cy.visit('https://legal:fit@a-dominguez.builder.sandbox.legalfit.io/practice-areas/drug-violations/marijuana-charges/')
+    cy.visit('http://legal:fit@a-dominguez.local.legalfit.io:8000/practice-areas/drug-violations/marijuana-charges/')
 })
 
 When(`I fill every contents of form leaving inquiry field empty on Interior Page`, (datatable) => {
@@ -81,7 +81,7 @@ Then('I should see "Please fill out this field." message under Inquiry field of 
 
 //Contact Page Form Won't Submit If The Name, Email, or Description Is Missing
 Given(`I logged in on the Render version of the Premium Site to test every fail scenario for contact form`, () => {
-    cy.visit('https://legal:fit@a-dominguez.builder.sandbox.legalfit.io')
+    cy.visit('http://legal:fit@a-dominguez.local.legalfit.io:8000')
 })
 
 When(`I fill every contents of form leaving name field empty to verify the case of Name`, (datatable) => {
@@ -164,7 +164,7 @@ Then('I will only see alert message', () => {
 
 //PPC Hero Contact Form Won't Submit If The Name, Email, or Description Is Missing
 Given(`I logged in on the Render version of the Premium Site having PPC Landing page and scroll to the Header contact form`, () => {
-    cy.visit('https://legal:fit@a-price.builder.sandbox.legalfit.io/family-law-attorney-tulsa/')
+    cy.visit('http://legal:fit@a-price.local.legalfit.io:8000/family-law-attorney-tulsa/')
 })
 
 When(`I fill every contents of form leaving name field empty on the hero block PPC landing Header form`, (datatable) => {
@@ -245,7 +245,7 @@ Then('I should see "Please fill out this field." message under Name field of the
 
 //PPC Footer Contact Form Won't Submit If The Name, Email, or Description Is Missing
 Given(`I logged in on the Render version of the Premium Site of the PPC landing page and scroll to the footer contact form`, () => {
-    cy.visit('https://legal:fit@a-price.builder.sandbox.legalfit.io/family-law-attorney-tulsa/')
+    cy.visit('http://legal:fit@a-price.local.legalfit.io:8000/family-law-attorney-tulsa/')
 })
 
 When(`I fill every contents of form leaving name field empty on PPC Landing Footer form`, (datatable) => {
