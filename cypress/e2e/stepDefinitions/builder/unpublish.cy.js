@@ -50,6 +50,8 @@ Then('The homepage should not be present', () => {
     cy.go('back')
     homepage.heroTitle().should('exist')
     editorFeatures.publishButton().click()
+    editorFeatures.toast().should('be.visible').and('contain.text', 'Published')
+    editorFeatures.publishedBadge().should('be.visible')
 })
 
 //Interior page will be unpublished when the unpublish action is done
