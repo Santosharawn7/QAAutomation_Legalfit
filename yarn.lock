@@ -1016,6 +1016,46 @@
     "debug" "^3.1.0"
     "lodash.once" "^4.1.1"
 
+"@jridgewell/gen-mapping@^0.3.0":
+  "integrity" "sha512-mh65xKQAzI6iBcFzwv28KVWSmCkdRBWoOh+bYQGW3+6OZvbbN3TqMGo5hqYxQniRcH9F2VZIoJCm4pa3BPDK/A=="
+  "resolved" "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.2.tgz"
+  "version" "0.3.2"
+  dependencies:
+    "@jridgewell/set-array" "^1.0.1"
+    "@jridgewell/sourcemap-codec" "^1.4.10"
+    "@jridgewell/trace-mapping" "^0.3.9"
+
+"@jridgewell/resolve-uri@^3.0.3":
+  "integrity" "sha512-F2msla3tad+Mfht5cJq7LSXcdudKTWCVYUgw6pLFOOHSTtZlj6SWNYAp+AhuqLmWdBO2X5hPrLcu8cVP8fy28w=="
+  "resolved" "https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.0.tgz"
+  "version" "3.1.0"
+
+"@jridgewell/set-array@^1.0.1":
+  "integrity" "sha512-xnkseuNADM0gt2bs+BvhO0p78Mk762YnZdsuzFV018NoG1Sj1SCQvpSqa7XUaTam5vAGasABV9qXASMKnFMwMw=="
+  "resolved" "https://registry.npmjs.org/@jridgewell/set-array/-/set-array-1.1.2.tgz"
+  "version" "1.1.2"
+
+"@jridgewell/source-map@^0.3.2":
+  "integrity" "sha512-m7O9o2uR8k2ObDysZYzdfhb08VuEml5oWGiosa1VdaPZ/A6QyPkAJuwN0Q1lhULOf6B7MtQmHENS743hWtCrgw=="
+  "resolved" "https://registry.npmjs.org/@jridgewell/source-map/-/source-map-0.3.2.tgz"
+  "version" "0.3.2"
+  dependencies:
+    "@jridgewell/gen-mapping" "^0.3.0"
+    "@jridgewell/trace-mapping" "^0.3.9"
+
+"@jridgewell/sourcemap-codec@^1.4.10":
+  "integrity" "sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw=="
+  "resolved" "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.14.tgz"
+  "version" "1.4.14"
+
+"@jridgewell/trace-mapping@^0.3.9":
+  "integrity" "sha512-bJWEfQ9lPTvm3SneWwRFVLzrh6nhjwqw7TUFFBEMzwvg7t7PCDenf2lDwqo4NQXzdpgBXyFgDWnQA+2vkruksQ=="
+  "resolved" "https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.14.tgz"
+  "version" "0.3.14"
+  dependencies:
+    "@jridgewell/resolve-uri" "^3.0.3"
+    "@jridgewell/sourcemap-codec" "^1.4.10"
+
 "@types/eslint-scope@^3.7.0":
   "integrity" "sha512-TzgYCWoPiTeRg6RQYgtuW7iODtVoKu3RVL72k3WohqhjfaOLK5Mg2T4Tg1o2bSfu0vPkoI48wdQFv5b/Xe04wQ=="
   "resolved" "https://registry.npmjs.org/@types/eslint-scope/-/eslint-scope-3.7.2.tgz"
@@ -1220,9 +1260,9 @@
   "version" "7.4.1"
 
 "acorn@^8.5.0":
-  "integrity" "sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ=="
-  "resolved" "https://registry.npmjs.org/acorn/-/acorn-8.7.0.tgz"
-  "version" "8.7.0"
+  "integrity" "sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w=="
+  "resolved" "https://registry.npmjs.org/acorn/-/acorn-8.8.0.tgz"
+  "version" "8.8.0"
 
 "acorn@^8", "acorn@^8.4.1":
   "integrity" "sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ=="
@@ -1796,6 +1836,13 @@
   "resolved" "https://registry.npmjs.org/caseless/-/caseless-0.12.0.tgz"
   "version" "0.12.0"
 
+"chai-colors@^1.0.1":
+  "integrity" "sha512-dHfkpLWbYx8jHxruZJWBO/TAh/kx6nK4FQ99bTGOxxChkGbq4x/1oOCbkoNo3CkyVZf5etG8qeaLaoAeCvC/mA=="
+  "resolved" "https://registry.npmjs.org/chai-colors/-/chai-colors-1.0.1.tgz"
+  "version" "1.0.1"
+  dependencies:
+    "onecolor" "~2.4.2"
+
 "chai@^4.2.0":
   "integrity" "sha512-yS5H68VYOCtN1cjfwumDSuzn/9c+yza4f3reKXlE5rUg7SFcCEy90gJvydNgOYtblyf4Zi6jIWRnXOgErta0KA=="
   "resolved" "https://registry.npmjs.org/chai/-/chai-4.3.4.tgz"
@@ -2193,10 +2240,20 @@
     "minimist" "^1.2.5"
     "through" "^2.3.8"
 
-"cypress@^10.1.0":
-  "integrity" "sha512-aQ4JVZVib4Xd9FZW8IRZfKelUvqF4y5A+oUbNvn8TlsBmEfIg3m5Xd6Mt6PVU/jHiVJ9Psl905B3ZPnrDcmyuQ=="
-  "resolved" "https://registry.npmjs.org/cypress/-/cypress-10.1.0.tgz"
-  "version" "10.1.0"
+"cypress-file-upload@^5.0.8":
+  "integrity" "sha512-+8VzNabRk3zG6x8f8BWArF/xA/W0VK4IZNx3MV0jFWrJS/qKn8eHfa5nU73P9fOQAgwHFJx7zjg4lwOnljMO8g=="
+  "resolved" "https://registry.npmjs.org/cypress-file-upload/-/cypress-file-upload-5.0.8.tgz"
+  "version" "5.0.8"
+
+"cypress-real-events@^1.7.1":
+  "integrity" "sha512-/Bg15RgJ0SYsuXc6lPqH08x19z6j2vmhWN4wXfJqm3z8BTAFiK2MvipZPzxT8Z0jJP0q7kuniWrLIvz/i/8lCQ=="
+  "resolved" "https://registry.npmjs.org/cypress-real-events/-/cypress-real-events-1.7.1.tgz"
+  "version" "1.7.1"
+
+"cypress@^10.6.0", "cypress@^4.x || ^5.x || ^6.x || ^7.x || ^8.x || ^9.x || ^10.x", "cypress@>3.0.0":
+  "integrity" "sha512-6sOpHjostp8gcLO34p6r/Ci342lBs8S5z9/eb3ZCQ22w2cIhMWGUoGKkosabPBfKcvRS9BE4UxybBtlIs8gTQA=="
+  "resolved" "https://registry.npmjs.org/cypress/-/cypress-10.6.0.tgz"
+  "version" "10.6.0"
   dependencies:
     "@cypress/request" "^2.88.10"
     "@cypress/xvfb" "^1.2.4"
@@ -3619,6 +3676,11 @@
   dependencies:
     "wrappy" "1"
 
+"onecolor@~2.4.2":
+  "integrity" "sha512-V2BitXZgajFyGmUNh+lYfoOQAKj31YhOBjqYVsVEkYUYUCr7MsVQbBKJdUWmLhu1c+y3imbdagOjbeC8ygrTyA=="
+  "resolved" "https://registry.npmjs.org/onecolor/-/onecolor-2.4.2.tgz"
+  "version" "2.4.2"
+
 "onetime@^5.1.0":
   "integrity" "sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg=="
   "resolved" "https://registry.npmjs.org/onetime/-/onetime-5.1.2.tgz"
@@ -4228,11 +4290,6 @@
   "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz"
   "version" "0.6.1"
 
-"source-map@~0.7.2":
-  "integrity" "sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ=="
-  "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.7.3.tgz"
-  "version" "0.7.3"
-
 "source-map@0.5.6":
   "integrity" "sha1-dc449SvwczxafwwRjYEzSiu19BI="
   "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.5.6.tgz"
@@ -4442,12 +4499,13 @@
     "terser" "^5.7.2"
 
 "terser@^5.7.2":
-  "integrity" "sha512-AMmF99DMfEDiRJfxfY5jj5wNH/bYO09cniSqhfoyxc8sFoYIgkJy86G04UoZU5VjlpnplVu0K6Tx6E9b5+DlHA=="
-  "resolved" "https://registry.npmjs.org/terser/-/terser-5.10.0.tgz"
-  "version" "5.10.0"
+  "integrity" "sha512-oL0rGeM/WFQCUd0y2QrWxYnq7tfSuKBiqTjRPWrRgB46WD/kiwHwF8T23z78H6Q6kGCuuHcPB+KULHRdxvVGQA=="
+  "resolved" "https://registry.npmjs.org/terser/-/terser-5.14.2.tgz"
+  "version" "5.14.2"
   dependencies:
+    "@jridgewell/source-map" "^0.3.2"
+    "acorn" "^8.5.0"
     "commander" "^2.20.0"
-    "source-map" "~0.7.2"
     "source-map-support" "~0.5.20"
 
 "thenify-all@^1.0.0":

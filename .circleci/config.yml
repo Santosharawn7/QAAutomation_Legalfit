@@ -1,6 +1,6 @@
 version: 2.1 # use CircleCI 2.0
 orbs:
-  cypress: cypress-io/cypress@2.0.0
+  cypress: cypress-io/cypress@2
 executors:
   with-chrome:
     resource_class: small
