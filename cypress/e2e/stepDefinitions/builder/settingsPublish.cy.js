@@ -16,7 +16,7 @@ const homepage = new Homepage()
 
 //Changes to Brand, Accent, and Link colors can be published
 Given('I am in the builder', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
 })
 
 When('I open the page settings drawer', () => {
@@ -81,7 +81,7 @@ And('I should see both Brand and Accent Color being changed in the page', () => 
 
 //New Desktop and Mobile Logos can be published
 Given('I am in the builder on premium sites', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
     cy.get('.hero-container .btn').should('be.visible')
 })
 
@@ -134,7 +134,7 @@ Then('I can see new logo on the page', () => {
 
 //A new FavIcon can be published
 Given('I am on a builder of premium sites', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
     cy.get('.hero-container .btn').should('be.visible')
 })
 
@@ -170,7 +170,7 @@ And('I can publish the settings', () => {
 
 //A generated FavIcon can be published
 Given('I am on a builder of premium sites', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
     cy.get('.hero-container .btn').should('be.visible')
 })
 
@@ -213,7 +213,7 @@ Then('I can publish settings', () => {
 
 //A change to the font pair can be published
 Given('I am on a builder of premium sites', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
     cy.get('.hero-container .btn').should('be.visible')
 })
 

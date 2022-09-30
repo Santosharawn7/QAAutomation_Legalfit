@@ -1,4 +1,11 @@
 {
-    "email" : "turing",
-    "password" : "h2B2oxKI74JVzjpWQW8rRlQkZ"
+    "sandbox":{
+        "email" : "turing",
+        "password" : "h2B2oxKI74JVzjpWQW8rRlQkZ" 
+    },
+    "local":{
+        "email" : "santosh7",
+        "password": "santosh123"
+    }
+    
 }
