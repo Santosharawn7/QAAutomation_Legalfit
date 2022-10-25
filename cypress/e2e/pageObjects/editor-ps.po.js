@@ -35,9 +35,23 @@ class EditorFeatures {
 
     unPublishMenu = () => cy.get('.dropdown-menu').contains('Unpublish')
 
+    pagesSideBar = () => cy.get('[id=sidebar-pages]')
+
+    blogSideBar = () => cy.get('[id=sidebar-blog]')
+
     designSideBar = () => cy.get('[id=sidebar-design]')
 
+    imagesSideBar = () => cy.get('[id=sidebar-images]')
+
+    appsSideBar = () => cy.get('[id=sidebar-apps]')
+
+    showInMenu = () => cy.get('[id=pages-show-in-menu-0]')
+
     drawerBody = () => cy.get('.drawer-body')
+    
+    saveMenu = () => cy.get('.drawer-footer .btn')
+
+    pagesList = () => cy.get('.sl-vue-tree-node').eq(0)
 
     brandColorInput = () => cy.get('.color-picker .color-picker-input').eq(0)
 
