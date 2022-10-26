@@ -8,17 +8,16 @@ report.generate({
             name: 'chrome',
             version: '105'
         },
-        device: 'Local test machine',
+        device: 'Sandbox QA',
         platform: {
-            name: 'ubuntu',
+            name: 'Ubuntu',
             version: '16.04'
         }
     },
     customData: {
         title: 'Run info',
         data: [
-            {label: 'Project', value: 'Custom project'},
-
+            {label: 'Project', value: 'Sandbox QA environment'},
         ]
     }
 });
