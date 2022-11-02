@@ -89,7 +89,7 @@ And('The page gets listed in the Pages list', () => {
 })
 
 And('I publish the page', () => {
-    editorFeatures.publishButton().click()
+    cy.builderPublish()
 })
 
 //Archiving and Unarchiving child page with no children
@@ -152,7 +152,7 @@ Then('The child page gets unarchived', () => {
 })
 
 And('I can publish the child page', () => {
-    editorFeatures.publishButton().click()
+    cy.builderPublish()
 })
 
 //Archiving and Unarchiving PPC Landing page
@@ -242,7 +242,7 @@ And('The PPC Landing page gets listed in the Pages list', () => {
 })
 
 And('I publish the PPC Landing page', () => {
-    editorFeatures.publishButton().click()
+    cy.builderPublish()
 })
 
 //archiving and unarchiving children page with no grandchildren
@@ -287,7 +287,7 @@ And('I toast warning is shown with message "Not archived: cannot archive pages t
 })
 
 When('I click Publish button on the parent page', () => {
-    editorFeatures.publishButton().click()
+    cy.builderPublish()
 })
 
 Then('The parent page gets published', () => {
@@ -357,8 +357,7 @@ Then('The grandchild page gets unarchived', () => {
 })
 
 And('I can publish the grandchild page', () => {
-    editorFeatures.publishButton().click()
-    editorFeatures.toast().should('exist').and('contain.text', 'Published')
+    cy.builderPublish()
     cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal', 200)
     cy.get('#sidebar-pages').click()
     cy.get(' .menu-right-icon').eq(0).click()
