@@ -3,6 +3,7 @@
 import Director from "../e2e/pageObjects/director-ps.po"
 import Login from "../e2e/pageObjects/login.po"
 import 'cypress-file-upload';
+import { EditorFeatures } from "../e2e/pageObjects/editor-ps.po";
 
 
 
@@ -22,6 +23,7 @@ import 'cypress-file-upload';
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 const login = new Login()
 const director = new Director()
+const editorFeatures = new EditorFeatures()
 
 Cypress.Commands.add('visitPremiumSite', () => {
 
@@ -88,4 +90,15 @@ Cypress.Commands.add('openTestRenderSite', () => {
 
 Cypress.Commands.add('openTestSiteMap', () => {
     cy.visit('https://legal:fit@autotest.builder.sandbox.legalfit.io/sitemap')
+})
+Cypress.Commands.add('builderPublish', ()=>{
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
+    editorFeatures.publishButton().click()
+    editorFeatures.toast().should('be.visible').and('contain.text', 'Published')
+    editorFeatures.publishedBadge().should('be.visible')
+    editorFeatures.publishedBadge().then(($badge)=>{
+        if($badge.length === 0) {
+            editorFeatures.publishButton().click()
+        }
+    })
 })
