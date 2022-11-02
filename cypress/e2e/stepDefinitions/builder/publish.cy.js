@@ -50,6 +50,7 @@ Then('I can see the published changes', () => {
     homepage.heroTitle().click().clear()
     homepage.heroTitle().type('This is a Automation Test Site', { delay: 1000 })
     homepage.heroTitle().should('contain.text', 'This is a Automation Test Site')
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
     cy.go('forward')
 })
@@ -79,6 +80,7 @@ Then('I can see "Has Changes" badge at the top left of the page of the interior 
 })
 
 When('I click the Publish button on the interior page', () => {
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
 })
 
@@ -99,6 +101,7 @@ Then('I can see the published changes on that interior page', () => {
     interiorpage.interiorHeroTitle().click().clear()
     interiorpage.interiorHeroTitle().type('AUTOMATION TEST', { delay: 100 })
     interiorpage.interiorHeroTitle().should('contain.text', 'AUTOMATION TEST')
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
     cy.go('forward')
 })
@@ -128,6 +131,7 @@ Then('I can see "Has Changes" badge at the top left of the page of the PPC Landi
 })
 
 When('I click the Publish button on the PPC Lading page', () => {
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
 })
 
@@ -147,6 +151,7 @@ Then('I can see the published changes on that PPC Landing page', () => {
     cy.go('back')
     ppcLanding.formTitle().click().clear()
     ppcLanding.formTitle().type('Automated Landing Text', { delay: 1000 })
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
     cy.go('forward')
 })
@@ -182,6 +187,7 @@ Then('I can see "Has Changes" badge at the top left of the page of the child pag
 })
 
 When('I click the Publish button on the child page', () => {
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
 })
 
@@ -208,6 +214,7 @@ Then('I can see the published changes on that child page', () => {
     interiorpage.interiorHeroTitle().click().clear()
     interiorpage.interiorHeroTitle().type('AUTOMATION TEST', { delay: 100 })
     interiorpage.interiorHeroTitle().should('contain.text', 'AUTOMATION TEST')
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
     cy.go('forward')
 })
@@ -243,6 +250,7 @@ Then('I can see "Has Changes" badge at the top left of the page of the grandchil
 })
 
 When('I click the Publish button on the grandchild page', () => {
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
 })
 
@@ -269,6 +277,7 @@ Then('I can see the published changes on that grandchild page', () => {
     interiorpage.interiorHeroTitle().click().clear()
     interiorpage.interiorHeroTitle().type('AUTOMATION TEST', { delay: 100 })
     interiorpage.interiorHeroTitle().should('contain.text', 'AUTOMATION TEST')
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
     cy.go('forward')
 })
@@ -311,6 +320,7 @@ Then('I can see "Has Changes" badge at the top left of the page of the great gra
 })
 
 When('I click the Publish button on the great grandchild page', () => {
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
 })
 
@@ -341,6 +351,7 @@ Then('I can see the published changes on that great grandchild page', () => {
     interiorpage.interiorHeroTitle().click().clear()
     interiorpage.interiorHeroTitle().type('AUTOMATION TEST', { delay: 100 })
     interiorpage.interiorHeroTitle().should('contain.text', 'AUTOMATION TEST')
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
     cy.go('forward')
 })
