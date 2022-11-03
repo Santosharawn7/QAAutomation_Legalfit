@@ -21,8 +21,12 @@ workflows:
             - cypress/install
           executor: with-chrome
           browser: chrome
-          command: |
-            mkdir -p ~/cucumber
-            npx cypress run     
-          post-install:
-            - run: node cucumber-html-reports.js
+          pre-steps:
+            - run: 
+                command: |
+                  mkdir -p ~/cucumber
+                  npx cypress run     
+          post-steps:
+            - run: 
+                command: node cucumber-html-reports.js
+          
