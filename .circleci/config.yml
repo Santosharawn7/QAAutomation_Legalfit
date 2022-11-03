@@ -16,8 +16,7 @@ workflows:
           yarn: true
           name: "Integration Test"
           install-command: 
-            yarn install
-            npm install multiple-cucumber-html-reporter --save-dev
+            yarn add multiple-cucumber-html-reporter --save-dev
           requires: 
             - cypress/install
           executor: with-chrome
