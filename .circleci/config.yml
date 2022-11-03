@@ -23,4 +23,5 @@ workflows:
           browser: chrome
           command: |
             mkdir -p ~/cucumber
+            npx cypress run
             node cucumber-html-reports.js
