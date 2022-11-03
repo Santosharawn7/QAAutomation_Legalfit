@@ -15,17 +15,19 @@ workflows:
       - cypress/run:
           yarn: true
           name: "Integration Test"
-          install-command: 
-            yarn add multiple-cucumber-html-reporter --save-dev
           requires: 
             - cypress/install
           executor: with-chrome
           browser: chrome
           pre-steps:
             - run: 
-                command: |
-                  mkdir -p ~/cucumber
-                  npx cypress run     
+                command: yarn install
+            - run: 
+                command: yarn add multiple-cucumber-html-reporter --save-dev
+            - run:
+                command: mkdir -p ~/cucumber
+            - run: 
+                command: npx cypress run     
           post-steps:
             - run: 
                 command: node cucumber-html-reports.js
