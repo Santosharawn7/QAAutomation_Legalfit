@@ -12,11 +12,12 @@ workflows:
       - cypress/install:
           install-command: |
             yarn install
-            npm install multiple-cucumber-html-reporter --save-dev
       - cypress/run:
           yarn: true
           name: "Integration Test"
-          install-command: "npm install"
+          install-command: 
+            yarn install
+            npm install multiple-cucumber-html-reporter --save-dev
           requires: 
             - cypress/install
           executor: with-chrome
