@@ -10,7 +10,9 @@ workflows:
   build:
     jobs:
       - cypress/install:
-          install-command: npm install
+          install-command: |
+            yarn install
+            npm install multiple-cucumber-html-reporter --save-dev
       - cypress/run:
           yarn: true
           name: "Integration Test"
