@@ -22,8 +22,8 @@ workflows:
             yarn install
             yarn add cypress --dev
             yarn add multiple-cucumber-html-reporter --save-dev
-            mkdir -p ~/cucumber    
+            mkdir -p ~/cucumber  
+            npx cypress run  
           post-install:
-            - run: npx cypress run 
             - run: node cucumber-html-reports.js
           
