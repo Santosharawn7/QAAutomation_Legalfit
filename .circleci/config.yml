@@ -21,7 +21,7 @@ workflows:
           browser: chrome
           pre-steps:
             - run: 
-                command: yarn install
+                command: yarn add cypress --dev
             - run: 
                 command: yarn add multiple-cucumber-html-reporter --save-dev
             - run:
