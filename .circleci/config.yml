@@ -14,12 +14,13 @@ jobs:
           command: |
             yarn install
             yarn add cypress --dev
+            sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
             yarn add multiple-cucumber-html-reporter --save-dev
             npx cypress verify
-            mkdir -p test-results
+            mkdir -p test-report
             npx cypress run
       - store_test_results:
-          path: test-results
+          path: test-report
 workflows:
   build:
     jobs:
