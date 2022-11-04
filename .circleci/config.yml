@@ -67,11 +67,15 @@ jobs:
           command: |
             npx cypress run
             node cucumber-html-reports.js
+      - run:
+          name: Copy files
+          command: |
             cp -r cypress/cucumber-reports test-report
       - store_test_results:
           path: test-results
       - store_artifacts:
-          path: test-results
+          path: cypress/cucumber-reports
+          destination: test-results
 workflows:
   test:
     jobs:
