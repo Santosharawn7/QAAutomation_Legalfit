@@ -1,50 +1,43 @@
 version: 2.1 # use CircleCI 2.0
 orbs:
   cypress: cypress-io/cypress@2
-# executors:
-#   with-chrome:
-#     resource_class: small
-jobs:     
-  build:
+executors:
+  with-chrome:
+    resource_class: small
     docker:
       - image: "cypress/browsers:node14.16.0-chrome90-ff88"
-    steps:
-      - run:
-          name: Install cypress 
-          command: |
-            yarn install
-            yarn add cypress --dev
-            apt get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-            yarn add multiple-cucumber-html-reporter --save-dev
-            npx cypress verify
-            mkdir -p test-report
-            npx cypress run
-      - store_test_results:
-          path: test-report
+
+      # - run:
+      #     name: Install cypress 
+      #     command: |
+      #       yarn install
+      #       yarn add cypress --dev
+      #       apt get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+      #       yarn add multiple-cucumber-html-reporter --save-dev
+      #       npx cypress verify
+      #       mkdir -p test-report
+      #       npx cypress run
+      
 workflows:
   build:
     jobs:
-      - build
-      # - cypress/install:
-      #     install-command: yarn install
-      # - cypress/run:
-      #     yarn: true
-      #     name: "Integration Test"
-      #     requires: 
-      #       - cypress/install
-      #     executor: with-chrome
-      #     browser: chrome
-      #     install-command: |
-      #       yarn install
-      #       yarn add cypress --dev
-      #       yarn add multiple-cucumber-html-reporter --save-dev
-      #       mkdir -p /tmp/core_dumps 
-      #       npx cypress run
-      #     post-install:
-      #       - run: node cucumber-html-reports.js
-      #       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-      #           path: test-results
-      #       - store_artifacts: # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-      #           path: test-results
-      #           destination: /tmp/core_dumps
+      - cypress/install:
+          install-command: yarn install
+      - cypress/run:
+          yarn: true
+          name: "Integration Test"
+          requires: 
+            - cypress/install
+          executor: with-chrome
+          browser: chrome
+          install-command: |
+            yarn install
+            yarn add cypress --dev
+            yarn add multiple-cucumber-html-reporter --save-dev
+            mkdir -p test-report 
+          post-install:
+            - run: npx cypress run
+            - run: node cucumber-html-reports.js
+            - store_test_results:
+                path: test-report
           
