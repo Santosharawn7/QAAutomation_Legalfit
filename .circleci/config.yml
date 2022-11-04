@@ -21,7 +21,9 @@ jobs:
     steps:
       - run: 
           name: Run Cypress
-          command: npx cypress run
+          command: |
+            cd QAAutomation-Int
+            npx cypress run
       - store_test_results:
           path: test-results
 workflows:
