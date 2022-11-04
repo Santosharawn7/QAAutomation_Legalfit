@@ -72,10 +72,9 @@ jobs:
           command: |
             cp -r cypress/cucumber-reports test-report
       - store_test_results:
-          path: test-results
+          path: test-report
       - store_artifacts:
-          path: cypress/cucumber-reports
-          destination: test-results
+          path: test-report
 workflows:
   test:
     jobs:
