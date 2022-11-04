@@ -15,24 +15,14 @@ jobs:
             yarn add cypress --dev
             yarn add multiple-cucumber-html-reporter --save-dev
             npx cypress verify
-  test:
-    docker:
-      - image: "cypress/browsers:node14.16.0-chrome90-ff88"
-    steps:
-      - run: 
-          name: Run Cypress
-          command: |
-            cd QAAutomation-Int
+            mkdir -p test-results
             npx cypress run
       - store_test_results:
           path: test-results
 workflows:
-  build_and_test:
+  build:
     jobs:
       - build
-      - test:
-          requires:
-            - build
       # - cypress/install:
       #     install-command: yarn install
       # - cypress/run:
