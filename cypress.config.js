@@ -19,6 +19,7 @@ module.exports = defineConfig({
     baseUrl: 'https://studio.sandbox.legalfit.io/',
     env: {
       builderUrl: 'https://legal:fit@automation-test.builder.sandbox.legalfit.io/admin/edit/',
+      builderTestUrl: 'https://legal:fit@autotest.builder.sandbox.legalfit.io/admin/edit/'
     },
     supportFile: 'cypress/support/e2e.js',
   },
