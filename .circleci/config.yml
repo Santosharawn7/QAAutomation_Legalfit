@@ -63,8 +63,8 @@ jobs:
             mkdir -p test-report 
             npx cypress verify
             npx cypress run
-            node cucumber-html-reports.js
-            cp -r cypress/cucumber-reports test-report
+      - run: node cucumber-html-reports.js
+      - run: cp -r cypress/cucumber-reports test-report
       - store_test_results:
           path: test-report
       - store_artifacts:
