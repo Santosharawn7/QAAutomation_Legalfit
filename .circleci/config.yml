@@ -74,7 +74,8 @@ jobs:
       - store_test_results:
           path: test-report
       - store_artifacts:
-          path: test-report
+          path: cypress/cucumber-reports
+          destination: test-report
 workflows:
   test:
     jobs:
