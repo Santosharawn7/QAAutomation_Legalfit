@@ -85,7 +85,7 @@ Then(`I should see the list of layouts`, () => {
 })
 
 When(`I filter the name of the layouts`, () => {
-  director.filter().type('everest footer')
+  director.filter().type('everest')
 })
 
 Then(`The pagination number should be set to "1"`, () => {
@@ -126,7 +126,7 @@ Then(`The blocks list page should be opened`, () => {
 })
 
 When(`I Filter the blocks name on the search filter`, () => {
-  director.filter().type('everest')
+  director.filter().type('everest footer')
 })
 
 Then(`The pagination number should be set to "1"`, () => {
