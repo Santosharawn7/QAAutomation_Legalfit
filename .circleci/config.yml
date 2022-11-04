@@ -12,6 +12,7 @@ jobs:
       - run:
           name: Install cypress 
           command: |
+            yarn install
             yarn add cypress --dev
             yarn add multiple-cucumber-html-reporter --save-dev
             npx cypress verify
