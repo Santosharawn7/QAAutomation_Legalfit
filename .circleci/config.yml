@@ -38,4 +38,6 @@ workflows:
           post-install:
             - store_test_results:
                 path: test-report
+            - store_artifacts:
+                path: test-report
           
