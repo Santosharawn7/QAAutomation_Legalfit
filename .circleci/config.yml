@@ -26,6 +26,6 @@ workflows:
             npx cypress run  
           post-install:
             - run: node cucumber-html-reports.js
-            - store_artifacts: 
+            - store_test_results: 
                 path: /tmp/core_dumps
           
