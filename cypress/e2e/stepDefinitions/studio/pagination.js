@@ -85,7 +85,7 @@ Then(`I should see the list of layouts`, () => {
 })
 
 When(`I filter the name of the layouts`, () => {
-  director.filter().type('everest')
+  director.filter().type('everest footer')
 })
 
 Then(`The pagination number should be set to "1"`, () => {
