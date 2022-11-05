@@ -9,7 +9,7 @@ Given('I logged in on Premium Sites Director', () => {
 
 When('I filter a premium site name on Search Filter', () => {
   director.tableList().should('have.lengthOf.lte', 30)
-  director.filter().type('a')
+  director.filter().type('a-price')
   cy.get('#websites-create-new').should('be.visible')
 })
 
