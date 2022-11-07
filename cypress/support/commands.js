@@ -23,15 +23,15 @@ import 'cypress-file-upload';
 const login = new Login()
 const director = new Director()
 
-Cypress.Commands.add('visitPremiumSite', ()=> {
-    
+Cypress.Commands.add('visitPremiumSite', () => {
+
 })
 
-Cypress.Commands.add('login', () => { 
+Cypress.Commands.add('login', () => {
     cy.visit('/')
-    cy.fixture('../fixtures/login-data').then(data =>{
+    cy.fixture('../fixtures/login-data').then(data => {
         login.email().type(data.email)
-        login.password().type(data.password,{log: false})
+        login.password().type(data.password, { log: false })
         login.submitButton().click()
         director.tableList().should('have.lengthOf.lte', 30)
     })
@@ -40,7 +40,7 @@ Cypress.Commands.add('login', () => {
 Cypress.Commands.add('openEditorSite', () => {
     cy.visit(Cypress.env('builderUrl'))
     login.email().type('turing')
-    login.password().type('h2B2oxKI74JVzjpWQW8rRlQkZ', {log: false})
+    login.password().type('h2B2oxKI74JVzjpWQW8rRlQkZ', { log: false })
     login.editorLogin().click()
 })
 
@@ -61,7 +61,7 @@ Cypress.Commands.add('showInsertBlocks', () => {
     cy.get('.add-block-container').invoke('attr', 'style', 'display: block')
 })
 
-Cypress.Commands.add('googleLogin', ()=>{
+Cypress.Commands.add('googleLogin', () => {
     cy.get('.google-login').click()
 })
 
@@ -75,7 +75,7 @@ Cypress.Commands.add('openSiteMap', () => {
 Cypress.Commands.add('openBuilderSite', () => {
     cy.visit(Cypress.env('builderTestUrl'))
     login.email().type('turing')
-    login.password().type('h2B2oxKI74JVzjpWQW8rRlQkZ', {log: false})
+    login.password().type('h2B2oxKI74JVzjpWQW8rRlQkZ', { log: false })
     login.editorLogin().click()
 })
 

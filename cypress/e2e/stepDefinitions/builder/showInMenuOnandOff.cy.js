@@ -38,13 +38,11 @@ And('the page is hidden from the Nav Menu in Render', () => {
 })
 But('the page is not hidden on the Sitemap', () => {
     cy.openTestSiteMap()
-    //cy.scrollTo('500,0')
     siteMap.home().should('exist')
 
 
 })
 And('the link on the Sitemap navigates the user to the Hidden page', () => {
-    //cy.get('.position-relative .block-wrapper-page-7229').scrollTo('center', {ensureScrollable: false})
     siteMap.home().click()
     cy.get('[arial-label="Home"]').should('not.exist')
 
