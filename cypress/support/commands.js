@@ -81,7 +81,7 @@ Cypress.Commands.add('builderPublish', ()=>{
             editorFeatures.publishButton().click()
         }
     })
-
+})
 
 // Autotest Environment
 
