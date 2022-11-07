@@ -81,7 +81,7 @@ Cypress.Commands.add('builderPublish', ()=>{
             editorFeatures.publishButton().click()
         }
     })
-})
+
 
 // Autotest Environment
 
@@ -102,4 +102,5 @@ Cypress.Commands.add('openTestRenderSite', () => {
 Cypress.Commands.add('openTestSiteMap', () => {
     cy.visit('https://legal:fit@autotest.builder.sandbox.legalfit.io/sitemap')
 })
+
 
