@@ -71,26 +71,6 @@ Cypress.Commands.add('openSiteMap', () => {
     cy.visit('https://legal:fit@automation-test.builder.sandbox.legalfit.io/sitemap')
 })
 
-
-// Autotest Environment
-
-Cypress.Commands.add('openBuilderSite', () => {
-    cy.visit(Cypress.env('builderTestUrl'))
-    login.email().type('turing')
-    login.password().type('h2B2oxKI74JVzjpWQW8rRlQkZ', { log: false })
-    login.editorLogin().click()
-})
-
-Cypress.Commands.add('openBuilderHomePage', () => {
-    cy.visit(Cypress.env('builderTestUrl'))
-})
-Cypress.Commands.add('openTestRenderSite', () => {
-    cy.visit('https://legal:fit@autotest.builder.sandbox.legalfit.io/')
-})
-
-Cypress.Commands.add('openTestSiteMap', () => {
-    cy.visit('https://legal:fit@autotest.builder.sandbox.legalfit.io/sitemap')
-})
 Cypress.Commands.add('builderPublish', ()=>{
     editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
