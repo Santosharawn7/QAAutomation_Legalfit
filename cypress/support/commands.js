@@ -102,14 +102,4 @@ Cypress.Commands.add('openTestRenderSite', () => {
 Cypress.Commands.add('openTestSiteMap', () => {
     cy.visit('https://legal:fit@autotest.builder.sandbox.legalfit.io/sitemap')
 })
-Cypress.Commands.add('builderPublish', ()=>{
-    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
-    editorFeatures.publishButton().click()
-    editorFeatures.toast().should('be.visible').and('contain.text', 'Published')
-    editorFeatures.publishedBadge().should('be.visible')
-    editorFeatures.publishedBadge().then(($badge)=>{
-        if($badge.length === 0) {
-            editorFeatures.publishButton().click()
-        }
-    })
-})
+
