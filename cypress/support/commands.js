@@ -108,7 +108,7 @@ Cypress.Commands.add('builderPublish', ()=>{
 Cypress.Commands.add('openBuilderSite', () => {
     cy.visit(Cypress.env('builderTestUrl'))
     login.email().type('turing')
-    login.password().type('h2B2oxKI74JVzjpWQW8rRlQkZ', {log: false})
+    login.password().type('h2B2oxKI74JVzjpWQW8rRlQkZ', { log: false })
     login.editorLogin().click()
 })
 
