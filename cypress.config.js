@@ -13,12 +13,13 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       return require('./cypress/plugins/index.js')(on, config)
     },
-    supportFile:'cypress/support/e2e.js',
+    supportFile: 'cypress/support/e2e.js',
     specPattern:
       'cypress/e2e/feature/',
     baseUrl: 'https://studio.sandbox.legalfit.io/',
     env: {
       builderUrl: 'https://legal:fit@automation-test.builder.sandbox.legalfit.io/admin/edit/',
+      builderTestUrl: 'https://legal:fit@autotest.builder.sandbox.legalfit.io/admin/edit/'
     },
     supportFile: 'cypress/support/e2e.js',
   },
