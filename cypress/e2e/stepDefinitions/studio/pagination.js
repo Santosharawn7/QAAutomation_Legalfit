@@ -126,7 +126,7 @@ Then(`The blocks list page should be opened`, () => {
 })
 
 When(`I Filter the blocks name on the search filter`, () => {
-  director.filter().type('everest')
+  director.filter().type('everest footer')
 })
 
 Then(`The pagination number should be set to "1"`, () => {
