@@ -3,6 +3,19 @@ import Director from "../../pageObjects/director-ps.po";
 
 const director = new Director()
 
+
+Given('I hit the URL', () => {
+  cy.visit(/)
+})
+
+When('I filter a premium site name on Search Filter', () => {
+  cy.get('#id_useremail').should('exist')
+})
+
+Then('I can see login fields', () => {
+  cy.get('#id_password').should('exist')
+})
+
 Given('I logged in on Premium Sites Director', () => {
   cy.login()
 })
