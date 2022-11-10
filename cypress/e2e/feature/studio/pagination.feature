@@ -2,6 +2,12 @@ Feature: Pagination and Filters
 
 Testing the Pagination feature on Premium Sites
 
+Scenario: Users can see login contents
+
+    Given I hit the URL
+    When I am on login page
+    Then I can see login fields
+
 Scenario: Users can see pagination set to 1 on Premium Site lists filtering out name and status
 
     Given I logged in on Premium Sites Director
