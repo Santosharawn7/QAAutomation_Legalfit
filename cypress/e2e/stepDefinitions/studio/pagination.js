@@ -5,7 +5,7 @@ const director = new Director()
 
 
 Given('I hit the URL', () => {
-  cy.visit(/)
+  cy.visit('/')
 })
 
 When('I filter a premium site name on Search Filter', () => {
