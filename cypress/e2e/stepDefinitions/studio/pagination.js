@@ -10,7 +10,6 @@ Given('I hit the URL', () => {
 })
 
 When('I am on login page', () => {
-  cy.visit(Cypress.env('localbaseUrl'))
   cy.fixture('../fixtures/login-data').then(data =>{
       login.email().type(data.email)
       login.password().type(data.password)
