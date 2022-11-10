@@ -13,14 +13,13 @@ When('I am on login page', () => {
   cy.visit(Cypress.env('localbaseUrl'))
   cy.fixture('../fixtures/login-data').then(data =>{
       login.email().type(data.email)
-      login.password().type(data.password,{log: false})
+      login.password().type(data.password)
       login.submitButton().click()
-      cy.get('.alert').should('exist').and('contain.text','Invalid username/email and/or password.')
   })
 })
 
 Then('I can see login fields', () => {
-  cy.get('#id_password').should('exist')
+   cy.get('.alert').should('exist').and('contain.text','Invalid username/email and/or password.')
 })
 
 Given('I logged in on Premium Sites Director', () => {
