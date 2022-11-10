@@ -5,10 +5,10 @@ const director = new Director()
 
 
 Given('I hit the URL', () => {
-  cy.visit('/')
+  cy.visit('http://standard.local.legalfit.io:3000/')
 })
 
-When('I filter a premium site name on Search Filter', () => {
+When('I am on login page', () => {
   cy.get('#id_useremail').should('exist')
 })
 
