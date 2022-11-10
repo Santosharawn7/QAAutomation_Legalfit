@@ -1,15 +1,22 @@
 import { Given, Then, When } from "cypress-cucumber-preprocessor/steps"
 import Director from "../../pageObjects/director-ps.po";
+import Login from "../../pageObjects/login.po";
 
 const director = new Director()
-
+const login = new Login()
 
 Given('I hit the URL', () => {
   cy.visit('http://standard.local.legalfit.io:3000/')
 })
 
 When('I am on login page', () => {
-  cy.get('#id_useremail').should('exist')
+  cy.visit(Cypress.env('localbaseUrl'))
+  cy.fixture('../fixtures/login-data').then(data =>{
+      login.email().type(data.local.email)
+      login.password().type(data.local.password,{log: false})
+      login.submitButton().click()
+      cy.get('.alert').should('exist').and('contain.text','Invalid username/email and/or password.')
+  })
 })
 
 Then('I can see login fields', () => {
