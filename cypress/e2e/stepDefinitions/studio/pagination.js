@@ -12,8 +12,8 @@ Given('I hit the URL', () => {
 When('I am on login page', () => {
   cy.visit(Cypress.env('localbaseUrl'))
   cy.fixture('../fixtures/login-data').then(data =>{
-      login.email().type(data.local.email)
-      login.password().type(data.local.password,{log: false})
+      login.email().type(data.email)
+      login.password().type(data.password,{log: false})
       login.submitButton().click()
       cy.get('.alert').should('exist').and('contain.text','Invalid username/email and/or password.')
   })
