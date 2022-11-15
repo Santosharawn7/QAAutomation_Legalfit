@@ -16,7 +16,7 @@ module.exports = defineConfig({
     supportFile:'cypress/support/e2e.js',
     specPattern:
       'cypress/e2e/feature/',
-    baseUrl: 'http://sites.local.legalfit.io:3000/',
+    baseUrl: 'http://standard.local.legalfit.io:8000/admin/login',
     env: {
       builderUrl: 'https://legal:fit@automation-test.builder.sandbox.legalfit.io/admin/edit/',
     },
