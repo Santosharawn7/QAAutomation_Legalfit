@@ -35,6 +35,7 @@ Cypress.Commands.add('login', () => {
         login.email().type(data.email)
         login.password().type(data.password,{log: false})
         login.submitButton().click()
+        cy.visit('http://standard.local.legalfit.io:3000/')
         director.tableList().should('have.lengthOf.lte', 30)
     })
 })
