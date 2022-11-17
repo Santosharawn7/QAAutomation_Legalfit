@@ -84,3 +84,15 @@ Cypress.Commands.add('openSiteMap', () => {
 Cypress.Commands.add('openLocalSiteMap', () => {
     cy.visit('http://legal:fit@automation-test.local.legalfit.io:8000/sitemap')
 })
+
+Cypress.Commands.add('builderPublish', ()=>{
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
+    editorFeatures.publishButton().click()
+    editorFeatures.toast().should('be.visible').and('contain.text', 'Published')
+    editorFeatures.publishedBadge().should('be.visible')
+    editorFeatures.publishedBadge().then(($badge)=>{
+        if($badge.length === 0) {
+            editorFeatures.publishButton().click()
+        }
+    })
+})
