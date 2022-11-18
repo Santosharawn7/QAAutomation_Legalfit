@@ -10,7 +10,7 @@ Given('I logged in on Premium Sites Director', () => {
 When('I filter a premium site name on Search Filter', () => {
   director.tableList().should('have.lengthOf.lte', 30)
   cy.get('tr a').should('exist')
-  director.filter().type('Aaronson')
+  director.filter().type('a-price')
   cy.get('#websites-create-new').should('be.visible')
 })
 
@@ -118,7 +118,7 @@ Then(`The blocks list page should be opened`, () => {
 })
 
 When(`I Filter the blocks name on the search filter`, () => {
-  director.filter().type('everest')
+  director.filter().type('everest footer')
 })
 
 Then(`The pagination number should be set to "1"`, () => {
@@ -217,7 +217,7 @@ Then(`I should see the list of Apps`, () => {
 })
 
 When(`I filter the name of the Apps`, () => {
-  director.filter().type('Live Chat')
+  director.filter().type('Google Analytics')
 })
 
 Then(`I should see the pagination number set to only "1"`, () => {
