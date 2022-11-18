@@ -1,25 +1,7 @@
 import { Given, Then, When } from "cypress-cucumber-preprocessor/steps"
 import Director from "../../pageObjects/director-ps.po";
-import Login from "../../pageObjects/login.po";
 
 const director = new Director()
-const login = new Login()
-
-Given('I hit the URL', () => {
-  cy.visit('http://standard.local.legalfit.io:3000/')
-})
-
-When('I am on login page', () => {
-  cy.fixture('../fixtures/login-data').then(data =>{
-      login.email().type(data.email)
-      login.password().type(data.password)
-      login.submitButton().click()
-  })
-})
-
-Then('I can see login fields', () => {
-   cy.get('.alert').should('exist').and('contain.text','Invalid username/email and/or password.')
-})
 
 Given('I logged in on Premium Sites Director', () => {
   cy.login()
@@ -27,7 +9,8 @@ Given('I logged in on Premium Sites Director', () => {
 
 When('I filter a premium site name on Search Filter', () => {
   director.tableList().should('have.lengthOf.lte', 30)
-  director.filter().type('a-price')
+  cy.get('tr a').should('exist')
+  director.filter().type('Aaronson')
   cy.get('#websites-create-new').should('be.visible')
 })
 
@@ -70,14 +53,10 @@ When('I click the Create New button', () => {
 
 Then('I should see the showcase of the layouts', () => {
   cy.get('.images-container').should('be.visible')
-  cy.request('/api/premium-website/types').as('layoutshowcase');
-  cy.get('@layoutshowcase').then(layoutshowcase => {
-    expect(layoutshowcase.status).to.eq(200);
-  });
 })
 
 When('I filter the name of the layout', () => {
-  director.filter().type('everest')
+  director.search().type('everest')
 })
 
 Then('I should see the Pagination is set to "1" on both of the paginations', () => {
@@ -96,10 +75,7 @@ When(`I click on Layouts in side navigation`, () => {
 
 Then(`I should see the list of layouts`, () => {
   director.tableList().should('have.lengthOf.lte', 30)
-  cy.request('/api/website-template').as('templates');
-  cy.get('@templates').then(templates => {
-    expect(templates.status).to.eq(200);
-  });
+  cy.get('tr a').should('exist')
 })
 
 When(`I filter the name of the layouts`, () => {
@@ -137,14 +113,12 @@ When(`I click the Blocks tab on side navigation`, () => {
 
 Then(`The blocks list page should be opened`, () => {
   director.tableList().should('have.lengthOf.lte', 30)
-  cy.request('/blocks').as('blocks');
-  cy.get('@blocks').then(blocks => {
-    expect(blocks.status).to.eq(200);
-  });
+  cy.get('tr a').should('exist')
+ 
 })
 
 When(`I Filter the blocks name on the search filter`, () => {
-  director.filter().type('everest footer')
+  director.filter().type('everest')
 })
 
 Then(`The pagination number should be set to "1"`, () => {
@@ -163,10 +137,7 @@ When(`I click the Buttons on side navigation`, () => {
 
 Then(`I should see the list of buttons`, () => {
   director.tableList().should('have.lengthOf.lte', 30)
-  cy.request('/api/button').as('buttons');
-  cy.get('@buttons').then(buttons => {
-    expect(buttons.status).to.eq(200);
-  });
+  cy.get('tr a').should('exist')
 })
 
 When(`I filter the name of the button`, () => {
@@ -191,10 +162,7 @@ When(`I click the Pages on side navigation`, () => {
 Then(`I should see the list of the pages style as default`, () => {
   director.tableList().should('have.lengthOf.lte', 30)
   director.pages().should('have.class', 'active')
-  cy.request('/api/page-variant/').as('pages');
-  cy.get('@pages').then(pages => {
-    expect(pages.status).to.eq(200);
-  });
+  cy.get('tr a').should('exist')
 })
 
 When(`I filter the Page Style on the set of filters`, () => {
@@ -219,13 +187,10 @@ When(`I click the Page Type on Pages list`, () => {
 Then(`I should see the list of page types`, () => {
   director.tableList().should('have.lengthOf.lte', 30)
   director.pageTypes().should('have.class', 'active')
-  cy.request('/api/page-type').as('pageType');
-  cy.get('@pageType').then(pageType => {
-    expect(pageType.status).to.eq(200);
-  });
 })
 
 When(`I filter the page type`, () => {
+  cy.get('tr a').should('exist')
   director.filterSearch().type('Blog')
 })
 
@@ -247,9 +212,8 @@ When(`I click on Apps on side nav bar`, () => {
 Then(`I should see the list of Apps`, () => {
   director.tableList().should('have.lengthOf.lte', 30)
   director.apps().should('have.class', 'active')
-  cy.request('/apps/').then((apps) => {
-    expect(apps.status).to.eq(200)
-  })
+  cy.get('tr a').should('exist')
+ 
 })
 
 When(`I filter the name of the Apps`, () => {
