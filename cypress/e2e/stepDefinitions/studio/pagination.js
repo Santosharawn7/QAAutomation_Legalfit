@@ -56,7 +56,7 @@ Then('I should see the showcase of the layouts', () => {
 })
 
 When('I filter the name of the layout', () => {
-  director.search().type('everest')
+  director.filter().type('everest')
 })
 
 Then('I should see the Pagination is set to "1" on both of the paginations', () => {
