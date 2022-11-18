@@ -8,6 +8,7 @@ Given('I logged in on Premium Sites Director', () => {
 })
 
 When('I filter a premium site name on Search Filter', () => {
+  cy.get('h2').should('contain.text','Websites')
   director.tableList().should('have.lengthOf.lte', 30)
   cy.get('tr a').should('exist')
   director.filter().type('a-price')
@@ -49,6 +50,7 @@ Given('I logged in on Premium Sites Director', () => {
 
 When('I click the Create New button', () => {
   director.createNewButton().click()
+  cy.get('h2').should('contain.text','Select a Layout')
 })
 
 Then('I should see the showcase of the layouts', () => {
@@ -56,7 +58,7 @@ Then('I should see the showcase of the layouts', () => {
 })
 
 When('I filter the name of the layout', () => {
-  director.filter().type('everest')
+  director.search().type('everest')
 })
 
 Then('I should see the Pagination is set to "1" on both of the paginations', () => {
@@ -71,6 +73,7 @@ Given('I logged in on Premium Sites Director', () => {
 
 When(`I click on Layouts in side navigation`, () => {
   director.templates().click()
+  cy.get('h2').should('contain.text','Website Layouts')
 })
 
 Then(`I should see the list of layouts`, () => {
@@ -109,6 +112,7 @@ Given('I logged in on Premium Sites Director', () => {
 
 When(`I click the Blocks tab on side navigation`, () => {
   director.blocks().click()
+  cy.get('h2').should('contain.text','Blocks')
 })
 
 Then(`The blocks list page should be opened`, () => {
@@ -118,6 +122,7 @@ Then(`The blocks list page should be opened`, () => {
 })
 
 When(`I Filter the blocks name on the search filter`, () => {
+  director.filter().click()
   director.filter().type('everest footer')
 })
 
@@ -133,6 +138,7 @@ Given('I logged in on Premium Sites Director', () => {
 
 When(`I click the Buttons on side navigation`, () => {
   director.buttons().click()
+  cy.get('h2').should('contain.text','Buttons')
 })
 
 Then(`I should see the list of buttons`, () => {
@@ -157,6 +163,7 @@ Given('I logged in on Premium Sites Director', () => {
 
 When(`I click the Pages on side navigation`, () => {
   director.pages().click()
+  cy.get('h2').should('contain.text','Pages')
 })
 
 Then(`I should see the list of the pages style as default`, () => {
@@ -182,6 +189,7 @@ Given('I logged in on Premium Sites Director', () => {
 When(`I click the Page Type on Pages list`, () => {
   director.pages().click()
   director.pageTypes().click()
+  cy.get('#page-types-create-new').should('exist')
 })
 
 Then(`I should see the list of page types`, () => {
@@ -207,6 +215,7 @@ Given('I logged in on Premium Sites Director', () => {
 
 When(`I click on Apps on side nav bar`, () => {
   director.apps().click()
+  cy.get('h2').should('contain.text','Apps')
 })
 
 Then(`I should see the list of Apps`, () => {
