@@ -3,6 +3,8 @@ class Director {
 
     filter = () => cy.get('#filter')
 
+    search = () => cy.get('#search')
+
     tableList = () => cy.get('.table tbody tr')
 
     createNewButton = () => cy.get('#websites-create-new')
