@@ -360,8 +360,7 @@ Then('The grandchild page gets unarchived', () => {
 })
 
 And('I can publish the grandchild page', () => {
-    editorFeatures.publishButton().click()
-    editorFeatures.toast().should('exist').and('contain.text', 'Published')
+    cy.builderPublish()
     cy.request('http://automation-test.local.legalfit.io:8000/admin/api/page/').its('status').should('be.equal', 200)
     cy.get('#sidebar-pages').click()
     cy.get(' .menu-right-icon').eq(0).click()
