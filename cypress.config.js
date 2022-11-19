@@ -1,7 +1,7 @@
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
-  pageLoadTimeout: 20000,
+  pageLoadTimeout: 60000,
   chromeWebSecurity: false,
   sourceRewriting: true,
   defaultCommandTimeout: 10000,
@@ -16,9 +16,12 @@ module.exports = defineConfig({
     supportFile:'cypress/support/e2e.js',
     specPattern:
       'cypress/e2e/feature/',
-    baseUrl: 'http://standard.local.legalfit.io:3000/',
     env: {
+      sandboxbaseUrl: 'https://studio.sandbox.legalfit.io/',
+      localbaseUrl: 'http://standard.local.legalfit.io:3000/stencil/',
+      preprodbaseUrl: 'https://studio.preprod.legalfit.io/',
       builderUrl: 'https://legal:fit@automation-test.builder.sandbox.legalfit.io/admin/edit/',
+      openlocalBuilderUrl: 'http://legal:fit@automation-test.local.legalfit.io:8000/admin/edit/'
     },
     supportFile: 'cypress/support/e2e.js',
   },
