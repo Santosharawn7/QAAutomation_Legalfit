@@ -49,9 +49,7 @@ Then('The homepage should not be present', () => {
     sitemap.home().should('not.exist')
     cy.go('back')
     homepage.heroTitle().should('exist')
-    editorFeatures.publishButton().click()
-    editorFeatures.publishedBadge().should('be.visible')
-    editorFeatures.toast().and('contain.text', 'Published')
+    cy.builderPublish()
 })
 
 //Interior page will be unpublished when the unpublish action is done
@@ -61,8 +59,13 @@ Given('I logged in on Premium Sites Builder', () => {
 
 When('I Navigate to the clients builder interior page', () => {
     cy.url().should('contain', '/admin/edit/')
-    editorFeatures.navigationItem().contains('asdf').should('exist').click()
-})
+    editorFeatures.navigationDropdown().then(($el) => {
+        cy.wrap($el).trigger('mouseover')
+        cy.wrap($el).children('.dropdown-menu').invoke('show')
+    })
+    cy.get('.nav-item.dropdown .dropdown-item').then(childpage => {
+        cy.wrap(childpage).contains('Service Detail').click()
+    })})
 
 And('Click the dropdown button next to the right of the publish', () => {
     editorFeatures.publishDropdown().click()
@@ -86,7 +89,6 @@ Then('Unpublish api should should show its status 200 of the interior page', () 
 
 And('"Unpublished" badge should be visible on the top left of screen of the interior page', () => {
     editorFeatures.unpublishBadge().should('contain.text', 'Unpublished')
-    editorFeatures.publishDropdown().should('not.exist')
 })
 
 When('I visit the render mode and navigate to interior page', () => {
@@ -94,7 +96,13 @@ When('I visit the render mode and navigate to interior page', () => {
 })
 
 Then('The unpublished interior page should not be visible', () => {
-    editorFeatures.navigationItem().contains('asdf').should('not.exist')
+    editorFeatures.navigationDropdown().then(($el) => {
+        cy.wrap($el).trigger('mouseover')
+        cy.wrap($el).children('.dropdown-menu').invoke('show')
+    })
+    cy.get('.nav-item.dropdown .dropdown-item').then(childpage => {
+        cy.wrap(childpage).should('not.eql','Service Detail')
+    })
 })
 
 When('I visit Sitemap', () => {
@@ -102,11 +110,11 @@ When('I visit Sitemap', () => {
 })
 
 Then('The unpublished interior page should not be present', () => {
-    cy.get('[aria-label="detail for asdf"]').should('not.exist')
+    cy.get('[aria-label="detail for Service Detail"]').should('not.exist')
     cy.go('back')
     cy.go('back')
     cy.wait(2000)
-    editorFeatures.publishButton().click()
+    cy.builderPublish()
 })
 
 //PPC Landing page will be unpublished when the unpublish action is done
@@ -161,7 +169,7 @@ Then('The unpublished PPC Landing page should not be present', () => {
     cy.go('back')
     cy.go('back')
     cy.wait(2000)
-    editorFeatures.publishButton().click()
+    cy.builderPublish()
 })
 
 //A child page will be unpublished when the unpublish action is done
@@ -225,7 +233,7 @@ Then('The unpublished child page should not be present', () => {
     cy.go('back')
     cy.go('back')
     cy.wait(2000)
-    editorFeatures.publishButton().click()
+    cy.builderPublish()
 })
 
 //A grandchild page will be unpublished when the unpublish action is done
@@ -289,7 +297,7 @@ Then('The unpublished grandchild page should not be present', () => {
     cy.go('back')
     cy.go('back')
     cy.wait(2000)
-    editorFeatures.publishButton().click()
+    cy.builderPublish()
 })
 
 //A great grandchild page will be unpublished when the unpublish action is done
@@ -347,5 +355,5 @@ Then('The unpublished great grandchild page should not be present', () => {
     cy.get('[aria-label="detail for Service Detail2"]').should('not.exist')
     cy.go('back')
     cy.wait(2000)
-    editorFeatures.publishButton().click()
+    cy.builderPublish()
 })

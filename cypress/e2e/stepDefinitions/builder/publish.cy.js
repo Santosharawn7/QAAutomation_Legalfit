@@ -50,6 +50,7 @@ Then('I can see the published changes', () => {
     homepage.heroTitle().click().clear()
     homepage.heroTitle().type('This is a Automation Test Site')
     homepage.heroTitle().should('contain.text', 'This is a Automation Test Site')
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
     cy.go('forward')
 })
@@ -79,6 +80,7 @@ Then('I can see "Has Changes" badge at the top left of the page of the interior 
 })
 
 When('I click the Publish button on the interior page', () => {
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
 })
 
@@ -99,6 +101,7 @@ Then('I can see the published changes on that interior page', () => {
     interiorpage.interiorHeroTitle().click().clear()
     interiorpage.interiorHeroTitle().type('AUTOMATION TEST')
     interiorpage.interiorHeroTitle().should('contain.text', 'AUTOMATION TEST')
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
     cy.go('forward')
 })
@@ -128,6 +131,7 @@ Then('I can see "Has Changes" badge at the top left of the page of the PPC Landi
 })
 
 When('I click the Publish button on the PPC Lading page', () => {
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
 })
 
@@ -182,6 +186,7 @@ Then('I can see "Has Changes" badge at the top left of the page of the child pag
 })
 
 When('I click the Publish button on the child page', () => {
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
 })
 
@@ -208,6 +213,7 @@ Then('I can see the published changes on that child page', () => {
     interiorpage.interiorHeroTitle().click().clear()
     interiorpage.interiorHeroTitle().type('AUTOMATION TEST')
     interiorpage.interiorHeroTitle().should('contain.text', 'AUTOMATION TEST')
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
     cy.go('forward')
 })
@@ -243,6 +249,7 @@ Then('I can see "Has Changes" badge at the top left of the page of the grandchil
 })
 
 When('I click the Publish button on the grandchild page', () => {
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
 })
 
@@ -269,6 +276,7 @@ Then('I can see the published changes on that grandchild page', () => {
     interiorpage.interiorHeroTitle().click().clear()
     interiorpage.interiorHeroTitle().type('AUTOMATION TEST')
     interiorpage.interiorHeroTitle().should('contain.text', 'AUTOMATION TEST')
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
     cy.go('forward')
 })
@@ -311,6 +319,7 @@ Then('I can see "Has Changes" badge at the top left of the page of the great gra
 })
 
 When('I click the Publish button on the great grandchild page', () => {
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
 })
 
@@ -341,6 +350,7 @@ Then('I can see the published changes on that great grandchild page', () => {
     interiorpage.interiorHeroTitle().click().clear()
     interiorpage.interiorHeroTitle().type('AUTOMATION TEST')
     interiorpage.interiorHeroTitle().should('contain.text', 'AUTOMATION TEST')
+    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
     cy.go('forward')
 })
