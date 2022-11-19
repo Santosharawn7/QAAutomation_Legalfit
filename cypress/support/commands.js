@@ -53,7 +53,7 @@ Cypress.Commands.add('openlocalBuilderSite', () => {
         login.email().type(data.local.email)
         login.password().type(data.local.password,{log: false})
         login.submitButton().click()
-        cy.visit(Cypress.env('openlocalBuilderUrl'))
+        cy.reload()
     })
 })
 
