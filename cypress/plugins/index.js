@@ -20,7 +20,7 @@ module.exports = (on, config) => {
   }
   on('file:preprocessor', cucumber())
    on('before:browser:launch', (browser = {}, launchOptions) => {
-    if (browser.name === 'chrome') { 
+    if (browser.name === 'electron') { 
       // ^ make sure this is your browser name, you may 
       // be using 'canary' or 'chromium' for example, so change it to match!
       launchOptions.args.push('--proxy-bypass-list=<-loopback>')
