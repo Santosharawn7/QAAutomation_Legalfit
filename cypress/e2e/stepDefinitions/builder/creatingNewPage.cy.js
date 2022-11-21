@@ -45,5 +45,14 @@ And('the new page displays at the bottom of the list', () => {
     cy.get('.sl-vue-tree-node .sl-vue-tree-title .position-relative').eq(-1).contains(randomMenutitle).should('be.visible')
 })
 And('the status is "Unpublished"', () => {
-    cy.get('.sl-vue-tree-node .sl-vue-tree-sidebar .d-flex .status .mr-3').eq(-1).contains('Unpublished')
+
+   cy.get('.sl-vue-tree-nodes-list .sl-vue-tree-node-item .sl-vue-tree-sidebar .status').each($el => {
+        cy.wrap($el).invoke('text').then(text => {
+            const titletext = text.trim()
+            if (titletext == 'Unpublished') {
+                cy.log(titletext)
+                cy.wrap($el).contains('Unpublished').should('be.visible')
+            }
+        })
+    })
 })
