@@ -48,10 +48,26 @@ class EditorFeatures {
     showInMenu = () => cy.get('[id=pages-show-in-menu-0]')
 
     drawerBody = () => cy.get('.drawer-body')
-    
+
     saveMenu = () => cy.get('.drawer-footer .btn')
 
     pagesList = () => cy.get('.sl-vue-tree-node').eq(0)
+
+    createNewPage = () => cy.get('[id=pages-create-new]')
+
+    pageType = () => cy.get('[id=pageType]')
+
+    parentPage = () => cy.get('[id=parentPage]')
+
+    menuTitle = () => cy.get('[id=pageTitle]')
+
+    urlSlug = () => cy.get('[id=slug]')
+
+    searchEnginePageTitle = () => cy.get('[id=title]')
+
+    searchEnginePageDescription = () => cy.get('[id=description]')
+
+    createPageBtn = () => cy.get('[id=pages-create]')
 
     brandColorInput = () => cy.get('.color-picker .color-picker-input').eq(0)
 
@@ -70,4 +86,4 @@ class PPCLanding {
     formTitle = () => cy.get('.landing-hero .form-wrapper .ProseMirror').eq(0)
 }
 
-export {Homepage, InteriorPage, EditorFeatures, PPCLanding}
+export { Homepage, InteriorPage, EditorFeatures, PPCLanding }
