@@ -18,6 +18,7 @@ When('I make any changes on the builder on the Hero Block', () => {
         cy.wrap(content).invoke('text').then(text => {
             const firstText = text.trim()
             cy.wrap(content).should('contain.text', firstText)
+            cy.wrap(content).scrollIntoView({force: true})
             cy.wrap(content).click().clear().type('Test123')
             cy.wrap(content).should('not.contain.text', firstText)
             cy.wrap(content).should('contain.text', 'Test123')
