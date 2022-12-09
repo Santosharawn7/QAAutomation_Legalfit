@@ -2,14 +2,15 @@ import { Given, When, Then, And } from "cypress-cucumber-preprocessor/steps";
 import { EditorFeatures } from "../../pageObjects/editor-ps.po";
 
 const editorFeatures = new EditorFeatures()
-const urlSlug = 'testingslug'
 const indicatorBubble = '#fd7e14'
 let randomText = ""
 let menuTitle = ""
+let urlSlug = ""
 var pattern = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 for (var i = 0; i < 10; i++)
     randomText += pattern.charAt(Math.floor(Math.random() * pattern.length));
 menuTitle = randomText
+urlSlug = randomText.toLowerCase()
 
 Given('a user has logged into Builder', () => {
     cy.openBuilderSite()
@@ -32,7 +33,6 @@ And('they clicked the "Page Settings" button', () => {
 })
 When('they update the "Menu Title" and "URL Slug" fields', () => {
     editorFeatures.menuTitle().clear()
-    cy.wait(200)
     editorFeatures.menuTitle().type(menuTitle)
     editorFeatures.urlSlugSetting().clear().type(urlSlug)
 })
