@@ -18,12 +18,14 @@ jobs:
             node cucumber-html-reports.js
             cp -r cypress/cucumber-reports test-report
             cp -r cypress/videos test-report
+
       - run: 
           when: on_fail
           command: | 
             node cucumber-html-reports.js
             cp -r cypress/cucumber-reports test-report
             cp -r cypress/videos test-report
+
       - store_test_results:
           path: test-report
       - store_artifacts:
@@ -32,6 +34,10 @@ jobs:
       - store_artifacts:
           path: cypress/videos
           destination: test-report
+workflows:
+  test:
+    jobs:
+      - test
 workflows:
   test:
     jobs:
