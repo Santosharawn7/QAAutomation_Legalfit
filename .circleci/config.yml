@@ -29,6 +29,9 @@ jobs:
       - store_artifacts:
           path: cypress/cucumber-reports
           destination: test-report
+      - store_artifacts:
+          path: cypress/videos
+          destination: test-report
 workflows:
   test:
     jobs:
