@@ -50,8 +50,22 @@ class EditorFeatures {
     drawerBody = () => cy.get('.drawer-body')
 
     saveMenu = () => cy.get('.drawer-footer .btn')
-
+    
     pagesList = () => cy.get('.sl-vue-tree-node').eq(0)
+
+    seoSetting = () => cy.get('.seo-icon')
+
+    seoTitle = () => cy.get('[id = title]')
+
+    seoDescription = () => cy.get('[id = description]')
+
+    orangeIcon = () => cy.get('.indicator-bubble')
+    
+    pageSettings = () => cy.get('.cog-icon')
+
+    menuTitle = () => cy.get('[id=pageTitle]')
+
+    urlSlugSetting = () => cy.get('[id=slug]')
 
     createNewPage = () => cy.get('[id=pages-create-new]')
 
