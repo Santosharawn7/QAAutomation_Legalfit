@@ -35,7 +35,6 @@ Cypress.Commands.add('login', () => {
         login.email().type(data.local.email)
         login.password().type(data.local.password,{log: false})
         login.submitButton().click()
-        cy.visit(Cypress.env('localbaseUrl'))
         director.tableList().should('have.lengthOf.lte', 30)
     })
 })
