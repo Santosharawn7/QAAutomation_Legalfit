@@ -21,7 +21,7 @@ module.exports = defineConfig({
       localbaseUrl: 'http://standard.local.legalfit.io:3000',
       preprodbaseUrl: 'https://studio.preprod.legalfit.io/',
       builderUrl: 'https://legal:fit@automation-test.builder.sandbox.legalfit.io/admin/edit/',
-      builderTestUrl: 'https://legal:fit@autotest.builder.sandbox.legalfit.io/admin/edit/'
+      builderTestUrl: 'http://legal:fit@autotest.local.legalfit.io:8000/admin/edit/'
     },
     supportFile: 'cypress/support/e2e.js',
   },
