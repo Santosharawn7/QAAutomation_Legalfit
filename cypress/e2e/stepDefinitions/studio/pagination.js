@@ -1,4 +1,4 @@
-import { Given, Then, When } from "cypress-cucumber-preprocessor/steps"
+import { And, Given, Then, When } from "cypress-cucumber-preprocessor/steps"
 import Director from "../../pageObjects/director-ps.po";
 
 const director = new Director()
@@ -66,6 +66,30 @@ Then('I should see the Pagination is set to "1" on both of the paginations', () 
   director.pageNumber().contains('2').should('not.exist')
 })
 
+//QA-sites
+Given('I logged in on Premium Sites Director', () => {
+  cy.login()
+})
+
+When('I click the QA Sites tab', () => {
+  cy.get('.nav-item').contains('QA Sites').click()
+})
+
+Then('I should see the list of QA sites', () => {
+  director.tableList().should('have.lengthOf.lte', 30)
+  cy.get('tr a').should('exist')
+})
+
+When('I filter the name of the QA site', () => {
+  director.filter().type('automation-test')
+})
+
+Then('I should see the Pagination is set to "1" on both of the paginations', () => {
+  director.pageNumber().contains('1').should('be.visible').and('have.attr', 'aria-checked', 'true')
+  director.pageNumber().contains('2').should('not.exist')
+})
+
+
 //layouts
 Given('I logged in on Premium Sites Director', () => {
   cy.login()
@@ -105,6 +129,34 @@ Then(`The pagination number should be set to "1"`, () => {
   director.pageNumber().contains('2').should('not.exist')
 })
 
+//archived layouts
+Given('I logged in on Premium Sites Director', () => {
+  cy.login()
+})
+
+When(`I click on Layouts in side navigation`, () => {
+  director.templates().click()
+  cy.get('h2').should('contain.text','Website Layouts')
+})
+
+And('I click on the Archived Tabs',()=>{
+  cy.get('.nav-link').contains('Archived')
+})
+
+Then(`I should see the list of Archived layouts`, () => {
+  director.tableList().should('have.lengthOf.lte', 30)
+  cy.get('tr a').should('exist')
+})
+
+When(`I filter the name of the Archived layouts`, () => {
+  director.filter().type('Akay')
+})
+
+Then(`The pagination number should be set to "1"`, () => {
+  director.pageNumber().contains('1').should('be.visible').and('have.attr', 'aria-checked', 'true')
+  director.pageNumber().contains('2').should('not.exist')
+})
+
 //blocks
 Given('I logged in on Premium Sites Director', () => {
   cy.login()
@@ -124,6 +176,35 @@ Then(`The blocks list page should be opened`, () => {
 When(`I Filter the blocks name on the search filter`, () => {
   director.filter().click()
   director.filter().type('everest footer')
+})
+
+Then(`The pagination number should be set to "1"`, () => {
+  director.pageNumber().contains('1').should('be.visible').should('have.attr', 'aria-checked', 'true')
+  director.pageNumber().contains('2').should('not.exist')
+})
+
+//archived blocks
+Given('I logged in on Premium Sites Director', () => {
+  cy.login()
+})
+
+When(`I click the Blocks tab on side navigation`, () => {
+  director.templates().click()
+  cy.get('h2').should('contain.text','Blocks')
+})
+
+And('I click on the Archived tab',()=>{
+  cy.get('.nav-link').contains('Archived')
+})
+
+Then(`The Archived blocks list page should be opened`, () => {
+  director.tableList().should('have.lengthOf.lte', 30)
+  cy.get('tr a').should('exist')
+})
+
+When(`I Filter the archived blocks name on the search filter`, () => {
+  director.filter().click()
+  director.filter().type('Akay Footer Locations')
 })
 
 Then(`The pagination number should be set to "1"`, () => {
@@ -207,6 +288,33 @@ Then(`I should see the pagination number set to only "1"`, () => {
   director.pageNumber().contains('2').should('not.exist')
 })
 
+//archived pages
+Given('I logged in on Premium Sites Director', () => {
+  cy.login()
+})
+
+When(`I click the Pages on side navigation`, () => {
+  director.templates().click()
+  cy.get('h2').should('contain.text','Pages')
+})
+
+And('I click on the Archived tab',()=>{
+  cy.get('.nav-link').contains('Archived')
+})
+
+Then(`I should see the list of the archived pages`, () => {
+  director.tableList().should('have.lengthOf.lte', 30)
+  cy.get('tr a').should('exist') 
+})
+
+When(`I filter the name of the archived page`, () => {
+  director.filter().type('Page: Content')
+})
+
+Then(`The pagination number should be set to "1"`, () => {
+  director.pageNumber().contains('1').should('be.visible').should('have.attr', 'aria-checked', 'true')
+  director.pageNumber().contains('2').should('not.exist')
+})
 
 //Apps
 Given('I logged in on Premium Sites Director', () => {
