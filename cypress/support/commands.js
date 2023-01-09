@@ -29,11 +29,11 @@ Cypress.Commands.add('visitPremiumSite', () => {
 
 })
 
-Cypress.Commands.add('login', () => {
-    cy.visit('/')
-    cy.fixture('../fixtures/login-data').then(data => {
-        login.email().type(data.email)
-        login.password().type(data.password, { log: false })
+Cypress.Commands.add('login', () => { 
+    cy.visit(Cypress.env('localbaseUrl'))
+    cy.fixture('../fixtures/login-data').then(data =>{
+        login.email().type(data.local.email)
+        login.password().type(data.local.password,{log: false})
         login.submitButton().click()
         director.tableList().should('have.lengthOf.lte', 30)
     })
@@ -46,10 +46,23 @@ Cypress.Commands.add('openEditorSite', () => {
     login.editorLogin().click()
 })
 
+Cypress.Commands.add('openlocalBuilderSite', () => {
+    cy.visit(Cypress.env('openlocalBuilderUrl'))
+    cy.fixture('../fixtures/login-data').then(data =>{
+        login.email().type(data.local.email)
+        login.password().type(data.local.password,{log: false})
+        login.submitButton().click()
+        cy.reload()
+    })
+})
+
 Cypress.Commands.add('openRenderSite', () => {
     cy.visit('https://legal:fit@automation-test.builder.sandbox.legalfit.io/')
 })
 
+Cypress.Commands.add('openLocalRenderSite', () => {
+    cy.visit('http://legal:fit@automation-test.local.legalfit.io:8000')
+})
 
 Cypress.Commands.add('showSettings', () => {
     cy.get('.settings-container').invoke('attr', 'style', 'display: block')
@@ -69,6 +82,10 @@ Cypress.Commands.add('googleLogin', () => {
 
 Cypress.Commands.add('openSiteMap', () => {
     cy.visit('https://legal:fit@automation-test.builder.sandbox.legalfit.io/sitemap')
+})
+
+Cypress.Commands.add('openLocalSiteMap', () => {
+    cy.visit('http://legal:fit@automation-test.local.legalfit.io:8000/sitemap')
 })
 
 Cypress.Commands.add('builderPublish', ()=>{

@@ -18,6 +18,14 @@ Scenario: Users can see pagination set to 1 on showcase of Layouts filtering out
     When I filter the name of the layout
     Then I should see the Pagination is set to "1" on both of the paginations
 
+Scenario: Users can see pagination set to 1 on QA sites list 
+
+    Given I logged in on Premium Sites Director
+    When I click the QA Sites tab
+    Then I should see the list of QA sites
+    When I filter the name of the QA site
+    Then I should see the Pagination is set to "1" on both of the paginations
+
 Scenario: Users can see pagination set to 1 on Layouts lists by filtering out name and style
     
     Given I logged in on Premium Sites Director
@@ -28,12 +36,30 @@ Scenario: Users can see pagination set to 1 on Layouts lists by filtering out na
     When I filter Refined Layouts
     Then The pagination number should be set to "1"
 
+Scenario: Users can see pagination set to 1 on Archived Layouts
+    
+    Given I logged in on Premium Sites Director
+    When I click on Layouts in side navigation
+    And I click on the Archived Tabs
+    Then I should see the list of Archived layouts
+    When I filter the name of the Archived layouts
+    Then The pagination number should be set to "1"
+
 Scenario: Users can see Pagination set to 1 on Blocks lists by filtering out blocks name
 
     Given I logged in on Premium Sites Director
     When I click the Blocks tab on side navigation
     Then The blocks list page should be opened
     When I Filter the blocks name on the search filter
+    Then The pagination number should be set to "1"
+
+Scenario: Users can see Pagination set to 1 on Archived Blocks lists by filtering out blocks name
+
+    Given I logged in on Premium Sites Director
+    When I click the Blocks tab on side navigation
+    And I click on the Archived tab
+    Then The Archived blocks list page should be opened
+    When I Filter the archived blocks name on the search filter
     Then The pagination number should be set to "1"
 
 Scenario: Users can see Pagination set to 1 on Buttons list by filtering name of button
@@ -58,6 +84,15 @@ Scenario: Users can see Pagination set to 1 on Page-Types list by filtering the 
     When I click the Page Type on Pages list
     Then I should see the list of page types
     When I filter the page type
+    Then I should see the pagination number set to only "1"
+
+Scenario: Users can see Pagination set to 1 on Archived Pages list by filtering the name
+
+    Given I logged in on Premium Sites Director
+    When I click the Pages on side navigation
+    And I click on the Archived tab
+    Then I should see the list of the archived pages
+    When I filter the name of the archived page
     Then I should see the pagination number set to only "1"
 
 Scenario: Users can see Pagination set to 1 on the Apps list by filtering the name of the Apps

@@ -10,7 +10,7 @@ const ppcLanding = new PPCLanding()
 
 //Homepage
 Given('I am logged in on builder', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
 })
 
 When('I make any changes on the builder on the Hero Block', () => {
@@ -18,7 +18,8 @@ When('I make any changes on the builder on the Hero Block', () => {
         cy.wrap(content).invoke('text').then(text => {
             const firstText = text.trim()
             cy.wrap(content).should('contain.text', firstText)
-            cy.wrap(content).click().clear().type('Test123', { delay: 1000 })
+            cy.wrap(content).scrollIntoView({force: true})
+            cy.wrap(content).click().clear().type('Test123')
             cy.wrap(content).should('not.contain.text', firstText)
             cy.wrap(content).should('contain.text', 'Test123')
         })
@@ -37,18 +38,18 @@ When('I click the Publish button', () => {
 
 Then('I can no longer see the "Has Changes" badge', () => {
     editorFeatures.toast().should('be.visible').and('contain.text', 'Published')
-    cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal', 200)
+    cy.request('http://automation-test.local.legalfit.io:8000/admin/api/page/').its('status').should('be.equal', 200)
 })
 
 When('I go to the render version of the site', () => {
-    cy.openRenderSite()
+    cy.openLocalRenderSite()
 })
 
 Then('I can see the published changes', () => {
     render.homepageHeroTitle().should('contain.text', 'Test123')
     cy.go('back')
     homepage.heroTitle().click().clear()
-    homepage.heroTitle().type('This is a Automation Test Site', { delay: 1000 })
+    homepage.heroTitle().type('This is a Automation Test Site')
     homepage.heroTitle().should('contain.text', 'This is a Automation Test Site')
     editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
@@ -57,7 +58,7 @@ Then('I can see the published changes', () => {
 
 //Interior page
 Given('I am logged in on the interior page', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
     editorFeatures.navigationItem().eq(1).click()
 })
 
@@ -66,7 +67,7 @@ When('I make changes on the interior page', () => {
         cy.wrap(content).invoke('text').then(text => {
             const firstText = text.trim()
             cy.wrap(content).should('contain.text', firstText)
-            cy.wrap(content).click().clear().type('Test123', { delay: 1000 })
+            cy.wrap(content).click().clear().type('Test123')
             cy.wrap(content).should('not.contain.text', firstText)
             cy.wrap(content).should('contain.text', 'Test123')
         })
@@ -86,11 +87,11 @@ When('I click the Publish button on the interior page', () => {
 
 Then('I can no longer see the "Has Changes" badge on the interior page', () => {
     editorFeatures.toast().and('contain.text', 'Published')
-    cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal', 200)
+    cy.request('http://automation-test.local.legalfit.io:8000/admin/api/page/').its('status').should('be.equal', 200)
 })
 
 When('I navigate to the render version of interior page', () => {
-    cy.openRenderSite()
+    cy.openLocalRenderSite()
     editorFeatures.navigationItem().eq(1).click()
 })
 
@@ -99,7 +100,7 @@ Then('I can see the published changes on that interior page', () => {
     cy.go('back')
     cy.go('back')
     interiorpage.interiorHeroTitle().click().clear()
-    interiorpage.interiorHeroTitle().type('AUTOMATION TEST', { delay: 100 })
+    interiorpage.interiorHeroTitle().type('AUTOMATION TEST')
     interiorpage.interiorHeroTitle().should('contain.text', 'AUTOMATION TEST')
     editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
@@ -108,7 +109,7 @@ Then('I can see the published changes on that interior page', () => {
 
 //PPC Landing page
 Given('I am logged in on the PPC Landing page', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
     editorFeatures.navigationItem().contains('PPC Landing').click()
 })
 
@@ -117,7 +118,7 @@ When('I make changes on the PPC Landing page', () => {
         cy.wrap(content).invoke('text').then(text => {
             const firstText = text.trim()
             cy.wrap(content).should('contain.text', firstText)
-            cy.wrap(content).click().clear().type('Test123', { delay: 1000 })
+            cy.wrap(content).click().clear().type('Test123')
             cy.wrap(content).should('not.contain.text', firstText)
             cy.wrap(content).should('contain.text', 'Test123')
         })
@@ -137,11 +138,11 @@ When('I click the Publish button on the PPC Lading page', () => {
 
 Then('I can no longer see the "Has Changes" badge on the PPC Landing page', () => {
     editorFeatures.toast().should('be.visible').and('contain.text', 'Published')
-    cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal', 200)
+    cy.request('http://automation-test.local.legalfit.io:8000/admin/api/page/').its('status').should('be.equal', 200)
 })
 
 When('I navigate to the render version of PPC Landing page', () => {
-    cy.openRenderSite()
+    cy.openLocalRenderSite()
     editorFeatures.navigationItem().contains('PPC Landing').click()
 })
 
@@ -150,15 +151,14 @@ Then('I can see the published changes on that PPC Landing page', () => {
     cy.go('back')
     cy.go('back')
     ppcLanding.formTitle().click().clear()
-    ppcLanding.formTitle().type('Automated Landing Text', { delay: 1000 })
-    editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
+    ppcLanding.formTitle().type('Automated Landing Text')
     editorFeatures.publishButton().click()
     cy.go('forward')
 })
 
 //Child page
 Given('I am logged in on the child page', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
     editorFeatures.navigationDropdown().then(($el) => {
         cy.wrap($el).trigger('mouseover')
         cy.wrap($el).children('.dropdown-menu').invoke('show')
@@ -173,7 +173,7 @@ When('I make changes on the child page', () => {
         cy.wrap(content).invoke('text').then(text => {
             const firstText = text.trim()
             cy.wrap(content).should('contain.text', firstText)
-            cy.wrap(content).click().clear().type('Test123', { delay: 1000 })
+            cy.wrap(content).click().clear().type('Test123')
             cy.wrap(content).should('not.contain.text', firstText)
             cy.wrap(content).should('contain.text', 'Test123')
         })
@@ -193,11 +193,11 @@ When('I click the Publish button on the child page', () => {
 
 Then('I can no longer see the "Has Changes" badge on the child page', () => {
     editorFeatures.toast().and('contain.text', 'Published')
-    cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal', 200)
+    cy.request('http://automation-test.local.legalfit.io:8000/admin/api/page/').its('status').should('be.equal', 200)
 })
 
 When('I navigate to the render version of child page', () => {
-    cy.openRenderSite()
+    cy.openLocalRenderSite()
     editorFeatures.navigationDropdown().then(($el) => {
         cy.wrap($el).trigger('mouseover')
         cy.wrap($el).children('.dropdown-menu').invoke('show')
@@ -212,7 +212,7 @@ Then('I can see the published changes on that child page', () => {
     cy.go('back')
     cy.go('back')
     interiorpage.interiorHeroTitle().click().clear()
-    interiorpage.interiorHeroTitle().type('AUTOMATION TEST', { delay: 100 })
+    interiorpage.interiorHeroTitle().type('AUTOMATION TEST')
     interiorpage.interiorHeroTitle().should('contain.text', 'AUTOMATION TEST')
     editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
@@ -221,7 +221,7 @@ Then('I can see the published changes on that child page', () => {
 
 //Grandchild page
 Given('I am logged in on the grandchild page', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
     editorFeatures.navigationDropdown().then(($el) => {
         cy.wrap($el).trigger('mouseover')
         cy.wrap($el).children('.dropdown-menu').invoke('show')
@@ -236,7 +236,7 @@ When('I make changes on the grandchild page', () => {
         cy.wrap(content).invoke('text').then(text => {
             const firstText = text.trim()
             cy.wrap(content).should('contain.text', firstText)
-            cy.wrap(content).click().clear().type('Test123', { delay: 1000 })
+            cy.wrap(content).click().clear().type('Test123')
             cy.wrap(content).should('not.contain.text', firstText)
             cy.wrap(content).should('contain.text', 'Test123')
         })
@@ -256,11 +256,11 @@ When('I click the Publish button on the grandchild page', () => {
 
 Then('I can no longer see the "Has Changes" badge on the grandchild page', () => {
     editorFeatures.toast().and('contain.text', 'Published')
-    cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal', 200)
+    cy.request('http://automation-test.local.legalfit.io:8000/admin/api/page/').its('status').should('be.equal', 200)
 })
 
 When('I navigate to the render version of grandchild page', () => {
-    cy.openRenderSite()
+    cy.openLocalRenderSite()
     editorFeatures.navigationDropdown().then(($el) => {
         cy.wrap($el).trigger('mouseover')
         cy.wrap($el).children('.dropdown-menu').invoke('show')
@@ -275,7 +275,7 @@ Then('I can see the published changes on that grandchild page', () => {
     cy.go('back')
     cy.go('back')
     interiorpage.interiorHeroTitle().click().clear()
-    interiorpage.interiorHeroTitle().type('AUTOMATION TEST', { delay: 100 })
+    interiorpage.interiorHeroTitle().type('AUTOMATION TEST')
     interiorpage.interiorHeroTitle().should('contain.text', 'AUTOMATION TEST')
     editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()
@@ -284,7 +284,7 @@ Then('I can see the published changes on that grandchild page', () => {
 
 //Great Grandchild page
 Given('I am logged in on the great grandchild page', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
     cy.get('#sidebar-pages').click()
     cy.get(' .menu-right-icon').eq(0).click()
     cy.get(' .menu-right-icon').eq(0).click()
@@ -306,7 +306,7 @@ When('I make changes on the great grandchild page', () => {
         cy.wrap(content).invoke('text').then(text => {
             const firstText = text.trim()
             cy.wrap(content).should('contain.text', firstText)
-            cy.wrap(content).click().clear().type('Test123', { delay: 1000 })
+            cy.wrap(content).click().clear().type('Test123')
             cy.wrap(content).should('not.contain.text', firstText)
             cy.wrap(content).should('contain.text', 'Test123')
         })
@@ -326,11 +326,11 @@ When('I click the Publish button on the great grandchild page', () => {
 
 Then('I can no longer see the "Has Changes" badge on the great grandchild page', () => {
     editorFeatures.toast().and('contain.text', 'Published')
-    cy.request('https://automation-test.builder.sandbox.legalfit.io//admin/api/page/').its('status').should('be.equal', 200)
+    cy.request('http://automation-test.local.legalfit.io:8000/admin/api/page/').its('status').should('be.equal', 200)
 })
 
 When('I navigate to the render version of great grandchild page', () => {
-    cy.openSiteMap()
+    cy.openLocalSiteMap()
     cy.get('.sitemap ul').within(list => {
         cy.wrap(list).find('li').within((parent) => {
             cy.wrap(parent).find('li').within(child => {
@@ -349,7 +349,7 @@ Then('I can see the published changes on that great grandchild page', () => {
     cy.go('back')
     cy.go('back')
     interiorpage.interiorHeroTitle().click().clear()
-    interiorpage.interiorHeroTitle().type('AUTOMATION TEST', { delay: 100 })
+    interiorpage.interiorHeroTitle().type('AUTOMATION TEST')
     interiorpage.interiorHeroTitle().should('contain.text', 'AUTOMATION TEST')
     editorFeatures.publishButton().should('have.css', 'background-color').and('be.colored', '#6A529A')
     editorFeatures.publishButton().click()

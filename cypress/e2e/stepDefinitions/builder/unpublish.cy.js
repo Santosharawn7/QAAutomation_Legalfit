@@ -8,7 +8,7 @@ const sitemap = new Sitemap()
 
 //Homepage will be unpublished when the unpublish action is done
 Given('I logged in on Premium Sites Builder', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
 })
 
 When('I Navigate to the clients builder for the site.', () => {
@@ -27,7 +27,7 @@ Then('I see the Unpublish button', () => {
 When('I click on the Unpublish button', () => {
     cy.intercept({
         method: 'PATCH',
-        url: 'https://automation-test.builder.sandbox.legalfit.io/admin/api/page/unpublish_or_publish/',
+        url: 'http://automation-test.local.legalfit.io:8000/admin/api/page/unpublish_or_publish/',
     }).as('apiCheck')
     editorFeatures.unPublishMenu().click()
 })
@@ -42,7 +42,7 @@ And('"Unpublished" badge should be visible on the top left of screen', () => {
 })
 
 When('I visit Sitemap', () => {
-    cy.openSiteMap()
+    cy.openLocalSiteMap()
 })
 
 Then('The homepage should not be present', () => {
@@ -54,7 +54,7 @@ Then('The homepage should not be present', () => {
 
 //Interior page will be unpublished when the unpublish action is done
 Given('I logged in on Premium Sites Builder', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
 })
 
 When('I Navigate to the clients builder interior page', () => {
@@ -78,7 +78,7 @@ Then('I see the Unpublish button on the interior page', () => {
 When('I click on the Unpublish button on the interior page', () => {
     cy.intercept({
         method: 'PATCH',
-        url: 'https://automation-test.builder.sandbox.legalfit.io/admin/api/page/unpublish_or_publish/',
+        url: 'http://automation-test.local.legalfit.io:8000/admin/api/page/unpublish_or_publish/',
     }).as('apiCheck')
     editorFeatures.unPublishMenu().click()
 })
@@ -92,7 +92,7 @@ And('"Unpublished" badge should be visible on the top left of screen of the inte
 })
 
 When('I visit the render mode and navigate to interior page', () => {
-    cy.openRenderSite()
+    cy.openLocalRenderSite()
 })
 
 Then('The unpublished interior page should not be visible', () => {
@@ -106,7 +106,7 @@ Then('The unpublished interior page should not be visible', () => {
 })
 
 When('I visit Sitemap', () => {
-    cy.openSiteMap()
+    cy.openLocalSiteMap()
 })
 
 Then('The unpublished interior page should not be present', () => {
@@ -119,7 +119,7 @@ Then('The unpublished interior page should not be present', () => {
 
 //PPC Landing page will be unpublished when the unpublish action is done
 Given('I logged in on Premium Sites Builder', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
 })
 
 When('I Navigate to the clients builder PPC Landing page', () => {
@@ -138,7 +138,7 @@ Then('I see the Unpublish button on the PPC Landing page', () => {
 When('I click on the Unpublish button on the PPC Landing page', () => {
     cy.intercept({
         method: 'PATCH',
-        url: 'https://automation-test.builder.sandbox.legalfit.io/admin/api/page/unpublish_or_publish/',
+        url: 'http://automation-test.local.legalfit.io:8000/admin/api/page/unpublish_or_publish/',
     }).as('apiCheck')
     editorFeatures.unPublishMenu().click()
 })
@@ -153,7 +153,7 @@ And('"Unpublished" badge should be visible on the top left of screen of the PPC 
 
 
 When('I visit the render mode and navigate to PPC Landing page', () => {
-    cy.openRenderSite()
+    cy.openLocalRenderSite()
 })
 
 Then('The unpublished PPC Landing page should not be visible', () => {
@@ -161,7 +161,7 @@ Then('The unpublished PPC Landing page should not be visible', () => {
 })
 
 When('I visit Sitemap', () => {
-    cy.openSiteMap()
+    cy.openLocalSiteMap()
 })
 
 Then('The unpublished PPC Landing page should not be present', () => {
@@ -174,7 +174,7 @@ Then('The unpublished PPC Landing page should not be present', () => {
 
 //A child page will be unpublished when the unpublish action is done
 Given('I logged in on Premium Sites Builder', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
 })
 
 When('I Navigate to the clients builder child page', () => {
@@ -199,7 +199,7 @@ Then('I see the Unpublish button on the child page', () => {
 When('I click on the Unpublish button on the child page', () => {
     cy.intercept({
         method: 'PATCH',
-        url: 'https://automation-test.builder.sandbox.legalfit.io/admin/api/page/unpublish_or_publish/',
+        url: 'http://automation-test.local.legalfit.io:8000/admin/api/page/unpublish_or_publish/',
     }).as('apiCheck')
     editorFeatures.unPublishMenu().click()
 })
@@ -213,7 +213,7 @@ And('"Unpublished" badge should be visible on the top left of screen of the chil
 })
 
 When('I visit the render mode and navigate to child page', () => {
-    cy.openRenderSite()
+    cy.openLocalRenderSite()
     editorFeatures.navigationDropdown().then(($el) => {
         cy.wrap($el).trigger('mouseover')
         cy.wrap($el).children('.dropdown-menu').invoke('show')
@@ -225,7 +225,7 @@ Then('The unpublished child page should not be visible', () => {
 })
 
 When('I visit Sitemap', () => {
-    cy.openSiteMap()
+    cy.openLocalSiteMap()
 })
 
 Then('The unpublished child page should not be present', () => {
@@ -238,7 +238,7 @@ Then('The unpublished child page should not be present', () => {
 
 //A grandchild page will be unpublished when the unpublish action is done
 Given('I logged in on Premium Sites Builder', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
 })
 
 When('I Navigate to the clients builder grandchild page', () => {
@@ -263,7 +263,7 @@ Then('I see the Unpublish button on the grandchild page', () => {
 When('I click on the Unpublish button on the grandchild page', () => {
     cy.intercept({
         method: 'PATCH',
-        url: 'https://automation-test.builder.sandbox.legalfit.io/admin/api/page/unpublish_or_publish/',
+        url: 'http://automation-test.local.legalfit.io:8000/admin/api/page/unpublish_or_publish/',
     }).as('apiCheck')
     cy.get('.dropdown-menu').contains('Unpublish').click()
 })
@@ -277,7 +277,7 @@ And('"Unpublished" badge should be visible on the top left of screen of the gran
 })
 
 When('I visit the render mode and navigate to grandchild page', () => {
-    cy.openRenderSite()
+    cy.openLocalRenderSite()
     editorFeatures.navigationDropdown().then(($el) => {
         cy.wrap($el).trigger('mouseover')
         cy.wrap($el).children('.dropdown-menu').invoke('show')
@@ -289,7 +289,7 @@ Then('The unpublished grandchild page should not be visible', () => {
 })
 
 When('I visit Sitemap', () => {
-    cy.openSiteMap()
+    cy.openLocalSiteMap()
 })
 
 Then('The unpublished grandchild page should not be present', () => {
@@ -302,7 +302,7 @@ Then('The unpublished grandchild page should not be present', () => {
 
 //A great grandchild page will be unpublished when the unpublish action is done
 Given('I logged in on Premium Sites Builder', () => {
-    cy.openEditorSite()
+    cy.openlocalBuilderSite()
 })
 
 When('I Navigate to the clients builder great grandchild page', () => {
@@ -334,7 +334,7 @@ Then('I see the Unpublish button on the great grandchild page', () => {
 When('I click on the Unpublish button on the great grandchild page', () => {
     cy.intercept({
         method: 'PATCH',
-        url: 'https://automation-test.builder.sandbox.legalfit.io/admin/api/page/unpublish_or_publish/',
+        url: 'http://automation-test.local.legalfit.io:8000/admin/api/page/unpublish_or_publish/',
     }).as('apiCheck')
     cy.get('.dropdown-menu').contains('Unpublish').click()
 })
@@ -348,7 +348,7 @@ And('"Unpublished" badge should be visible on the top left of screen of the grea
 })
 
 When('I visit Sitemap', () => {
-    cy.openSiteMap()
+    cy.openLocalSiteMap()
 })
 
 Then('The unpublished great grandchild page should not be present', () => {
