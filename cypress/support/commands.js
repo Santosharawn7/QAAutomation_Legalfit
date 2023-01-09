@@ -25,8 +25,8 @@ const login = new Login()
 const director = new Director()
 const editorFeatures = new EditorFeatures()
 
-Cypress.Commands.add('visitPremiumSite', ()=> {
-    
+Cypress.Commands.add('visitPremiumSite', () => {
+
 })
 
 Cypress.Commands.add('login', () => { 
@@ -42,7 +42,7 @@ Cypress.Commands.add('login', () => {
 Cypress.Commands.add('openEditorSite', () => {
     cy.visit(Cypress.env('builderUrl'))
     login.email().type('turing')
-    login.password().type('h2B2oxKI74JVzjpWQW8rRlQkZ', {log: false})
+    login.password().type('h2B2oxKI74JVzjpWQW8rRlQkZ', { log: false })
     login.editorLogin().click()
 })
 
@@ -76,7 +76,7 @@ Cypress.Commands.add('showInsertBlocks', () => {
     cy.get('.add-block-container').invoke('attr', 'style', 'display: block')
 })
 
-Cypress.Commands.add('googleLogin', ()=>{
+Cypress.Commands.add('googleLogin', () => {
     cy.get('.google-login').click()
 })
 
@@ -99,3 +99,25 @@ Cypress.Commands.add('builderPublish', ()=>{
         }
     })
 })
+
+// Autotest Environment
+
+Cypress.Commands.add('openBuilderSite', () => {
+    cy.visit(Cypress.env('builderTestUrl'))
+    login.email().type('turing')
+    login.password().type('h2B2oxKI74JVzjpWQW8rRlQkZ', { log: false })
+    login.editorLogin().click()
+})
+
+Cypress.Commands.add('openBuilderHomePage', () => {
+    cy.visit(Cypress.env('builderTestUrl'))
+})
+Cypress.Commands.add('openTestRenderSite', () => {
+    cy.visit('https://legal:fit@autotest.builder.sandbox.legalfit.io/')
+})
+
+Cypress.Commands.add('openTestSiteMap', () => {
+    cy.visit('https://legal:fit@autotest.builder.sandbox.legalfit.io/sitemap')
+})
+
+

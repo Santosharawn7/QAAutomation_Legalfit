@@ -13,7 +13,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       return require('./cypress/plugins/index.js')(on, config)
     },
-    supportFile:'cypress/support/e2e.js',
+    supportFile: 'cypress/support/e2e.js',
     specPattern:
       'cypress/e2e/feature/',
     env: {
@@ -21,7 +21,7 @@ module.exports = defineConfig({
       localbaseUrl: 'http://standard.local.legalfit.io:3000',
       preprodbaseUrl: 'https://studio.preprod.legalfit.io/',
       builderUrl: 'https://legal:fit@automation-test.builder.sandbox.legalfit.io/admin/edit/',
-      openlocalBuilderUrl: 'http://legal:fit@automation-test.local.legalfit.io:8000/admin/edit/'
+      builderTestUrl: 'https://legal:fit@autotest.builder.sandbox.legalfit.io/admin/edit/'
     },
     supportFile: 'cypress/support/e2e.js',
   },
