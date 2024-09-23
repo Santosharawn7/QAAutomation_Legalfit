@@ -15,7 +15,7 @@ module.exports = defineConfig({
     },
     supportFile: 'cypress/support/e2e.js',
     specPattern:
-      'cypress/e2e/feature/',
+      'cypress/e2e/premium-sites-tests/',
     env: {
       sandboxbaseUrl: 'https://studio.sandbox.legalfit.io/',
       localbaseUrl: 'http://standard.local.legalfit.io:3000',
